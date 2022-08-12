@@ -38,3 +38,8 @@ SELECT DISTINCT rating
 FROM film 
 ORDER BY 1;
 --
+
+SELECT actor_id, first_name, last_name  
+FROM actor  
+ORDER BY 2, 3;
+--
