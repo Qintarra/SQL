@@ -23,3 +23,8 @@ SELECT title, release_year
 FROM film 
 ORDER BY 2, 1;
 --
+
+SELECT title AS movie_title, release_year AS movie_release_year  
+FROM film 
+ORDER BY 1;
+--
