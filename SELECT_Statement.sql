@@ -6,10 +6,16 @@ FROM film;
 
 SELECT title, release_year
 FROM film;
-ORDER By title;
+ORDER BY title;
 --
 
 SELECT title, release_year
 FROM film;
-ORDER By release_year DESC;
+ORDER BY release_year DESC;
 --
+
+SELECT title, release_year
+FROM film;
+ORDER BY release_year, title;
+--
+
