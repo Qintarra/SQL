@@ -66,3 +66,9 @@ FROM actor
 WHERE UPPER (last_name) LIKE ('BRA%') 
 ORDER BY 2;
 --
+
+SELECT actor_id, first_name || ' ' || last_name AS actor_full_name
+FROM actor  
+WHERE UPPER (last_name) IN ('CRUISE', 'BRANDO', 'STREEP') 
+ORDER BY 2;
+--
