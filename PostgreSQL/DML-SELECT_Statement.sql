@@ -48,3 +48,9 @@ SELECT actor_id, first_name || ' ' || last_name AS actor_full_name
 FROM actor  
 ORDER BY 2;
 --
+
+SELECT actor_id, first_name || ' ' || last_name AS actor_full_name
+FROM actor  
+WHERE last_name = 'Cruise' 
+ORDER BY 2;
+--
