@@ -102,3 +102,9 @@ SELECT LEAST (5, 26, -75, 0, 36.6, NULL, 7); -- 75
 
 SELECT PG_TYPEOF(LEAST(5, 26, -75, 0, 36.6, NULL, 7)); -- numeric
 --
+
+SELECT COALESCE (NULL, 10, '50'); -- 10
+--
+
+SELECT COALESCE (NULL, NULL, '50', 10); -- 50
+--
