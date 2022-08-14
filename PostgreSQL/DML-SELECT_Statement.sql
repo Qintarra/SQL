@@ -84,3 +84,12 @@ SELECT POSITION ('l' IN 'Leonardo'); -- 0
 
 SELECT POSITION ('o' IN 'Leonardo'); -- 3
 --
+
+SELECT 2 + 2 * 2; -- 6
+--
+
+SELECT 2 + 2 * 2 = 6; -- true
+--
+
+SELECT 2 + 2 * 2 = 7; -- false
+--
