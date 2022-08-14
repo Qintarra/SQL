@@ -81,3 +81,6 @@ SELECT POSITION ('L' IN 'Leonardo'); -- 1
 
 SELECT POSITION ('l' IN 'Leonardo'); -- 0
 --
+
+SELECT POSITION ('o' IN 'Leonardo'); -- 3
+--
