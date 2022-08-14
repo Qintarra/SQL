@@ -99,3 +99,6 @@ SELECT GREATEST (5, 26, -75, 0, 36.6, NULL, 7); -- 36.6
 
 SELECT LEAST (5, 26, -75, 0, 36.6, NULL, 7); -- 75
 --
+
+SELECT PG_TYPEOF(LEAST(5, 26, -75, 0, 36.6, NULL, 7)); -- numeric
+--
