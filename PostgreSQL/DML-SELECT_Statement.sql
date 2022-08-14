@@ -93,3 +93,6 @@ SELECT 2 + 2 * 2 = 6; -- true
 
 SELECT 2 + 2 * 2 = 7; -- false
 --
+
+SELECT GREATEST (5, 26, -75, 0, 36.6, NULL, 7); -- 36.6
+--
