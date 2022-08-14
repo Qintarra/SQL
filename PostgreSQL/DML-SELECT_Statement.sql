@@ -72,3 +72,6 @@ FROM actor
 WHERE UPPER (last_name) IN ('CRUISE', 'BRANDO', 'STREEP') 
 ORDER BY 2;
 --
+
+SELECT SUBSTRING ('Leonardo', 1, 3); -- Leo
+--
