@@ -147,3 +147,18 @@ GROUP BY a.first_name, a.last_name
 HAVING COUNT (*) > 40
 ORDER BY count_of_film DESC;
 --
+
+-- three longest films and actors, who played there
+SELECT  max_length_film.title AS movie_title,
+		a.first_name || ' ' || a.last_name AS actor_full_name,
+		length as minutes_length
+FROM 
+	(SELECT * 
+	FROM film f 
+	ORDER BY f.length DESC 
+	LIMIT (3)) AS max_length_film
+INNER JOIN film_actor fa
+ON fa.film_id = max_length_film.film_id
+INNER JOIN actor a
+ON a.actor_id = fa.actor_id;
+--
