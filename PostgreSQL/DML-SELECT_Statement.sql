@@ -121,3 +121,12 @@ ORDER BY 1;
 SELECT * 
 FROM language;
 --
+
+SELECT f.title AS movie_title,
+       lang.name AS language_name
+FROM film f 
+INNER JOIN 
+language lang
+ON lang.language_id = f.language_id 
+ORDER BY 1;
+--
