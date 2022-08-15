@@ -173,3 +173,15 @@ WHERE fa.actor_id =
 					 );
 --
 
+-- amount of movies, where Tom Hanks played with the name of the movies				 
+SELECT  f.title,
+		f.release_year
+FROM film f
+WHERE f.film_id IN (
+					SELECT fa.film_id
+					FROM film_actor fa
+					WHERE fa.actor_id = 
+										(SELECT a.actor_id
+										 FROM actor a 
+										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'));
+--
