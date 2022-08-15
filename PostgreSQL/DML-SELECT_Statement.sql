@@ -185,3 +185,17 @@ WHERE f.film_id IN (
 										 FROM actor a 
 										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'));
 --
+
+-- same, but with EXISTS operator
+SELECT  f.title,
+		f.release_year
+FROM film f
+WHERE EXISTS (
+					SELECT fa.film_id
+					FROM film_actor fa
+					WHERE fa.actor_id = 
+										(SELECT a.actor_id
+										 FROM actor a 
+										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS')
+					AND f.film_id = fa.film_id);  -- filtering
+--
