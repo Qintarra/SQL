@@ -162,3 +162,14 @@ ON fa.film_id = max_length_film.film_id
 INNER JOIN actor a
 ON a.actor_id = fa.actor_id;
 --
+
+-- amount of movies, where Tom Hanks played
+SELECT fa.film_id
+FROM film_actor fa
+WHERE fa.actor_id = 
+					(SELECT a.actor_id
+					 FROM actor a 
+					 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'
+					 );
+--
+
