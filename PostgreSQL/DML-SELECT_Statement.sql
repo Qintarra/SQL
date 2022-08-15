@@ -130,3 +130,11 @@ language lang
 ON lang.language_id = f.language_id 
 ORDER BY 1;
 --
+
+SELECT a.first_name, a.last_name, COUNT(*) AS count_of_film
+FROM actor a
+INNER JOIN film_actor fa
+ON fa.actor_id = a.actor_id 
+GROUP BY a.first_name, a.last_name
+ORDER BY count_of_film;
+--
