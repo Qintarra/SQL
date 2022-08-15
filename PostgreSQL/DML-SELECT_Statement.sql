@@ -114,3 +114,10 @@ SELECT PG_TYPEOF(COALESCE (NULL, NULL, '50', 10)); -- integer
 
 SELECT PG_TYPEOF(COALESCE (NULL, NULL, '50', 10::TEXT)); -- text
 --
+
+SELECT title, language_id -- language_id is a foreign key to the language table
+FROM film 
+ORDER BY 1;
+SELECT * 
+FROM language;
+--
