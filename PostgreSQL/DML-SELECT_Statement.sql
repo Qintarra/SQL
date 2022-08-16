@@ -199,3 +199,12 @@ WHERE EXISTS (
 										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS')
 					AND f.film_id = fa.film_id);  -- filtering
 --
+
+SELECT 2 IN (1, 4, 5, 7); -- false
+--
+
+SELECT 2 NOT IN (1, 4, 5, 7); -- true
+--
+
+SELECT 2 NOT IN (1, 4, 5, 7, NULL); -- NULL
+--
