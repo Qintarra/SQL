@@ -237,3 +237,22 @@ WHERE f.film_id IN (SELECT film_id
 					FROM film_tom_hanks
 					);
 --
+
+-- top 3 longest films (title, release year, length)
+-- from the last 10 years
+-- rated PG-13 or higher
+-- available in at least two DVD rental shops
+SELECT  f.title, 
+		f.release_year, 
+		f.length 
+FROM film f 
+WHERE f.release_year >= EXTRACT (YEAR FROM current_date) - 10 
+AND f.rating IN ('PG-13', 'R', 'NC-17') -- f.rating >= 'PG-13' 
+AND f.film_id IN (
+					SELECT inv.film_id
+					FROM inventory inv
+					GROUP BY inv.film_id
+					HAVING COUNT(DISTINCT inv.store_id) >= 2)
+ORDER BY f.length DESC
+LIMIT 3;
+--
