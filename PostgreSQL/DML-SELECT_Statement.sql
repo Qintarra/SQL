@@ -208,3 +208,16 @@ SELECT 2 NOT IN (1, 4, 5, 7); -- true
 
 SELECT 2 NOT IN (1, 4, 5, 7, NULL); -- NULL
 --
+
+-- same, but move logic into the query using the JOIN
+SELECT  f.title,
+		f.release_year
+FROM film f
+INNER JOIN film_actor fa
+ON fa.film_id = f.film_id
+WHERE fa.actor_id = 
+					(SELECT a.actor_id
+					 FROM actor a 
+					 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'
+					 );
+--
