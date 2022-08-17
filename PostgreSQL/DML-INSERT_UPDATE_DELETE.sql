@@ -53,3 +53,15 @@ WHERE city_id = 607;
 
 TRUNCATE city CASCADE -- NEVER USE TRUNCATE IN THIS FORM (deletes all rows in all tables linked with foreign key) (city, address, and payment tables will be cleared)
 --
+
+WITH update_stmt AS -- CTE
+(
+UPDATE city 
+SET city = cr.new_name 
+FROM city_rename cr 
+WHERE cr.city_id = city.city_id 
+RETURNING *)
+
+SELECT 'Updated city name from' || old_name || 'to' || new_name
+FROM update_stmt;
+--
