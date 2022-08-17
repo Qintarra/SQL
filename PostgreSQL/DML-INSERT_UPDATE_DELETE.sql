@@ -50,3 +50,6 @@ WHERE UPPER (c.city) = 'Dnipro'; -- city id 607
 DELETE FROM city 
 WHERE city_id = 607;
 --
+
+TRUNCATE city CASCADE -- NEVER USE TRUNCATE IN THIS FORM (deletes all rows in all tables linked with foreign key) (city, address, and payment tables will be cleared)
+--
