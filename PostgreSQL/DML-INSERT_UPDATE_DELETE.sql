@@ -15,3 +15,11 @@ SELECT 'Kharkiv', cnt.country_id
 FROM country cnt
 WHERE UPPER (cnt.country) = 'UKRAINE';
 --
+
+INSERT INTO city (city, country_id)
+
+SELECT 'Dnipro', cnt.country_id
+FROM country cnt
+WHERE UPPER (cnt.country) = 'UKRAINE'
+RETURNING city_id;
+--
