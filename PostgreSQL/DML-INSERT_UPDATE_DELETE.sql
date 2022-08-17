@@ -41,3 +41,12 @@ FROM city_rename cr
 WHERE cr.city_id = city.city_id 
 RETURNING *;
 --
+
+-- DELETE & TRUNCATE Statements
+SELECT * 
+FROM city c
+WHERE UPPER (c.city) = 'Dnipro'; -- city id 607
+
+DELETE FROM city 
+WHERE city_id = 607;
+--
