@@ -34,3 +34,10 @@ UPDATE city
 SET city = 'Shostka'
 WHERE city_id = 385;
 --
+
+UPDATE city 
+SET city = cr.new_name 
+FROM city_rename cr 
+WHERE cr.city_id = city.city_id 
+RETURNING *;
+--
