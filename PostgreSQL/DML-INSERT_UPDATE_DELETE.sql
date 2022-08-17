@@ -23,3 +23,14 @@ FROM country cnt
 WHERE UPPER (cnt.country) = 'UKRAINE'
 RETURNING city_id;
 --
+
+-- DML: UPDATE Statement
+SELECT * 
+FROM city c
+WHERE c.country_id = 100
+ORDER BY 1;
+
+UPDATE city 
+SET city = 'Shostka'
+WHERE city_id = 385;
+--
