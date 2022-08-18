@@ -35,3 +35,19 @@ CREATE TABLE training_data.dim_trainees
 INSERT INTO training_data.dim_trainees(group_id, first_name, last_name, birth_date)
 VALUES (1, 'Rocky', 'Balboa', '1945-07-06'::DATE)
 --
+
+/* - VIEW retrieves data at the time of access instead of storing it on disk
+- executing DDL commands on views does not affect data in the database
+- VIEW holds the query which references certain data projection */
+CREATE VIEW active_trainees_snapshot AS
+
+SELECT  g.group_id,
+		g.group_number,
+		t.trainee_id,
+		t.full_name,
+		current_date AS snapshot_date
+FROM	training_data.dim_groups g 
+JOIN 	training_data.dim_trainees t 
+ON   	g.group_id = t.group_id
+WHERE 	g.disband_year IS NULL;
+--
