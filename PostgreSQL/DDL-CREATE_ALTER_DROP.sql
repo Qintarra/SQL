@@ -51,3 +51,8 @@ JOIN 	training_data.dim_trainees t
 ON   	g.group_id = t.group_id
 WHERE 	g.disband_year IS NULL;
 --
+
+-- Add a column
+ALTER TABLE training_data.dim_trainees
+ADD COLUMN education TEXT; -- new_colun_name DATA TYPE
+--
