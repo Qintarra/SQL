@@ -61,3 +61,8 @@ ADD COLUMN education TEXT; -- new_colun_name DATA TYPE
 ALTER TABLE training_data.dim_trainees
 DROP COLUMN birth_date;
 --
+
+-- Rename a column
+ALTER TABLE training_data.dim_trainees
+RENAME COLUMN graduation_year TO graduation_date;
+--
