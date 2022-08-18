@@ -56,3 +56,8 @@ WHERE 	g.disband_year IS NULL;
 ALTER TABLE training_data.dim_trainees
 ADD COLUMN education TEXT; -- new_colun_name DATA TYPE
 --
+
+-- Remove a column
+ALTER TABLE training_data.dim_trainees
+DROP COLUMN birth_date;
+--
