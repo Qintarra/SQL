@@ -92,3 +92,8 @@ ADD CHECK (education IN ('completed', 'incoplete')); -- an attempt to insert any
 ALTER TABLE training_data.dim_trainees
 RENAME TO dim_participants; -- Attention! Existing views and functions referring to this table will have to be recreated with a new name
 --
+
+-- DROP - be carefull!
+-- It's better to rename a table and move it to archive schema and/or data storage than to DROP it.
+DROP TABLE [IF EXISTS] table_name [CASCADE | RESTRICT];
+--
