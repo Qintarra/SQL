@@ -78,3 +78,8 @@ ALTER TABLE training_data.dim_trainees
 ALTER COLUMN graduation_date 
 SET DEFAULT '1900-01-01'; -- this value will apply in case you insert the data, but don't specify a column
 --
+
+-- Manage constraints (the last line of defence)
+ALTER TABLE training_data.dim_trainees
+ALTER COLUMN last_name SET NOT NULL; -- with this constraint is required to specify a column without a default value
+--
