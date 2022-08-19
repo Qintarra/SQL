@@ -66,3 +66,9 @@ DROP COLUMN birth_date;
 ALTER TABLE training_data.dim_trainees
 RENAME COLUMN graduation_year TO graduation_date;
 --
+
+-- Change the DATA TYPE of the column
+ALTER TABLE training_data.dim_trainees
+ALTER COLUMN graduation_date TYPE date 
+USING (graduation_date || '-01-01')::DATE;
+--
