@@ -118,3 +118,8 @@ BEGIN
 		RETURN v_group_id;
 END;
 $$;
+
+SELECT add_new_group (102) -- check, how function works
+
+SELECT * FROM training_data.dim_groups -- check the values in table
+--
