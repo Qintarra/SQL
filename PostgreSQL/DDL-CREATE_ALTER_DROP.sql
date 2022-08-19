@@ -72,3 +72,9 @@ ALTER TABLE training_data.dim_trainees
 ALTER COLUMN graduation_date TYPE date 
 USING (graduation_date || '-01-01')::DATE;
 --
+
+-- Change a default value for the column
+ALTER TABLE training_data.dim_trainees
+ALTER COLUMN graduation_date 
+SET DEFAULT '1900-01-01'; -- this value will apply in case you insert the data, but don't specify a column
+--
