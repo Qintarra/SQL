@@ -97,3 +97,24 @@ RENAME TO dim_participants; -- Attention! Existing views and functions referring
 -- It's better to rename a table and move it to archive schema and/or data storage than to DROP it.
 DROP TABLE [IF EXISTS] table_name [CASCADE | RESTRICT];
 --
+
+-- CREATE FUNCTION: Language PL/pgSQL
+-- function for adding a new trainig group
+CREATE FUNCTION add_new_group (IN i_group_number INT) -- number of the groups to be added is passed as an input parameter
+RETURNS BIGINT
+LANGUAGE plpgsql
+
+AS $$
+DECLARE
+		v_group_id BIGINT;
+		
+BEGIN
+		INSERT INTO training_data.dim_groups(group_number) 
+		VALUES (i_group_number)
+		RETURNING group_id INTO v_group_id;
+		
+		RAISE NOTICE 'New group % added! ID = %', i_group_number, v_group_id; -- to demonstrate the work of wthe function we display a text message
+		
+		RETURN v_group_id;
+END;
+$$;
