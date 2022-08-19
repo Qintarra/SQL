@@ -87,3 +87,8 @@ ALTER COLUMN last_name SET NOT NULL; -- with this constraint is required to spec
 ALTER TABLE training_data.dim_trainees
 ADD CHECK (education IN ('completed', 'incoplete')); -- an attempt to insert any other values (including empty ones) will cause an error
 --
+
+-- Rename DB objects
+ALTER TABLE training_data.dim_trainees
+RENAME TO dim_participants; -- Attention! Existing views and functions referring to this table will have to be recreated with a new name
+--
