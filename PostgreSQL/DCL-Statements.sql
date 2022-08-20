@@ -20,3 +20,6 @@ GRANT CREATE ON SCHEMA dvd_rental to dvd_rentail_admin; -- allow dvd_rentail_adm
 
 GRANT ALL ON ALL TABLES IN SCHEMA dvd_rental TO dvd_rentail_admin; -- allow to perform DML on all tables in schema
 --
+
+GRANT CONNECT TO client_ben -- allow role client_ben to authenticate into the database. client_ben role needs to be created with LOGIN option 
+--
