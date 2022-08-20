@@ -11,3 +11,6 @@ GRANT ALL ON TABLE film TO public; -- grants all privileges on table to public, 
 
 REVOKE ALL IN TABLE film FROM public; -- remove dangerous privileges from public role 
 --
+
+GRANT EXECUTE ON FUNCTION list_recent_films TO public; -- allow all users to invoke function list_recent_films
+--
