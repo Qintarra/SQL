@@ -14,3 +14,7 @@ REVOKE ALL IN TABLE film FROM public; -- remove dangerous privileges from public
 
 GRANT EXECUTE ON FUNCTION list_recent_films TO public; -- allow all users to invoke function list_recent_films
 --
+
+GRANT CREATE ON SCHEMA dvd_rental to dvd_rentail_admin; -- allow dvd_rentail_admin to manage objects in a schema
+--
+
