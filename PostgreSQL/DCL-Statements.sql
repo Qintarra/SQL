@@ -18,3 +18,5 @@ GRANT EXECUTE ON FUNCTION list_recent_films TO public; -- allow all users to inv
 GRANT CREATE ON SCHEMA dvd_rental to dvd_rentail_admin; -- allow dvd_rentail_admin to manage objects in a schema
 --
 
+GRANT ALL ON ALL TABLES IN SCHEMA dvd_rental TO dvd_rentail_admin; -- allow to perform DML on all tables in schema
+--
