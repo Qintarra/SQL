@@ -23,3 +23,21 @@ WHERE 	prod_subcategory IN ('Bulk Pack Diskettes', 'Camera Media', 'Printer Supp
 |129    |Model NM500X High Yield Toner Cartridge|Printer Supplies   |192.99         |86.99|
 */
 --
+
+-- SUM() + PARTITION BY
+-- Get the sales amount by channels and countries for 09.2000 - 10.2000 and the total sales amount by countries
+SELECT	 cn.country_name,
+		 ch.channel_desc,
+		 SUM (amount_sold) AS sales$,
+		 SUM (SUM (amount_sold)) OVER (PARTITION BY cn.country_name) AS all_channels_sales$ 
+FROM 	 sh.sales s 
+ JOIN	 sh.products p ON p.prod_id = s.prod_id 
+ JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+ JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+WHERE	 t.calendar_month_desc IN ('2000-09', '2000-10')
+AND 	 cn.country_iso_code IN ('AU', 'BR', 'CA', 'DE')
+GROUP BY cn.country_name,
+		 ch.channel_desc 
+ORDER BY country_name;
