@@ -87,3 +87,22 @@ GROUP BY prod_category,
 |Software/Other             |Europe        |3,288.83|4,445.7      |
 |Software/Other             |Oceania       |890.25  |4,445.7      |
 */
+-- part 2:
+SELECT 	prod_category,
+		country_region,
+		sales
+FROM	(
+		SELECT	 prod_category,
+				 country_region,
+				 SUM (s.amount_sold) AS sales,
+				 MAX (SUM (amount_sold)) OVER (PARTITION BY p.prod_category) AS max_reg_sales
+		FROM 	 sh.sales s 
+		 JOIN	 sh.products p ON p.prod_id = s.prod_id 
+		 JOIN	 sh.customers cust ON cust.cust_id = s.cust_id  
+		 JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+		 JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+		WHERE	 time_id = TO_DATE ('11-OCT-2001', 'DD-MON-YYYY')
+		GROUP BY prod_category,
+				 country_region
+		) tab
+WHERE 	sales = max_reg_sales;
