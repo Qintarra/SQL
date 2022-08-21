@@ -73,3 +73,17 @@ FROM 	 sh.sales s
 WHERE	 time_id = TO_DATE ('11-OCT-2001', 'DD-MON-YYYY')
 GROUP BY prod_category,
 		 country_region;
+/*
+|prod_category              |country_region|sales   |max_reg_sales|
+|---------------------------|--------------|--------|-------------|
+|Electronics                |Americas      |581.92  |581.92       |
+|Hardware                   |Americas      |925.93  |925.93       |
+|Peripherals and Accessories|Americas      |3,084.48|4,290.38     |
+|Peripherals and Accessories|Asia          |2,616.51|4,290.38     |
+|Peripherals and Accessories|Europe        |4,290.38|4,290.38     |
+|Peripherals and Accessories|Oceania       |940.43  |4,290.38     |
+|Software/Other             |Americas      |4,445.7 |4,445.7      |
+|Software/Other             |Asia          |1,408.19|4,445.7      |
+|Software/Other             |Europe        |3,288.83|4,445.7      |
+|Software/Other             |Oceania       |890.25  |4,445.7      |
+*/
