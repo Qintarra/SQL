@@ -106,3 +106,12 @@ FROM	(
 				 country_region
 		) tab
 WHERE 	sales = max_reg_sales;
+/*
+|prod_category              |country_region|sales   |
+|---------------------------|--------------|--------|
+|Electronics                |Americas      |581.92  |
+|Hardware                   |Americas      |925.93  |
+|Peripherals and Accessories|Europe        |4,290.38|
+|Software/Other             |Americas      |4,445.7 |
+*/
+--
