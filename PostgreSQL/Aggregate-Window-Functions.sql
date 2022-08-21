@@ -41,3 +41,20 @@ AND 	 cn.country_iso_code IN ('AU', 'BR', 'CA', 'DE')
 GROUP BY cn.country_name,
 		 ch.channel_desc 
 ORDER BY country_name;
+-- Note: the window function can take as an argument not only the name of the columns but also expressions (the Sum function in this case)
+/*
+|country_name|channel_desc|sales$    |all_channels_sales$|
+|------------|------------|----------|-------------------|
+|Australia   |Direct Sales|97,052.66 |172,636.47         |
+|Australia   |Internet    |12,903.02 |172,636.47         |
+|Australia   |Partners    |62,680.79 |172,636.47         |
+|Brazil      |Direct Sales|8.46      |1,564.48           |
+|Brazil      |Partners    |1,556.02  |1,564.48           |
+|Canada      |Direct Sales|52,323.4  |103,413.28         |
+|Canada      |Internet    |13,547.6  |103,413.28         |
+|Canada      |Partners    |37,542.28 |103,413.28         |
+|Germany     |Direct Sales|274,535.59|406,232.18         |
+|Germany     |Internet    |36,865.38 |406,232.18         |
+|Germany     |Partners    |94,831.21 |406,232.18         |
+*/
+--
