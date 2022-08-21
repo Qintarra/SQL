@@ -58,3 +58,18 @@ ORDER BY country_name;
 |Germany     |Partners    |94,831.21 |406,232.18         |
 */
 --
+
+-- TASK. For each product category, find the region in which it had maximum sales
+--part 1:
+SELECT	 prod_category,
+		 country_region,
+		 SUM (s.amount_sold) AS sales,
+		 MAX (SUM (amount_sold)) OVER (PARTITION BY p.prod_category) AS max_reg_sales -- window function MAX will find the maximum value of sales for each product category
+FROM 	 sh.sales s 
+ JOIN	 sh.products p ON p.prod_id = s.prod_id 
+ JOIN	 sh.customers cust ON cust.cust_id = s.cust_id  
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+ JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+WHERE	 time_id = TO_DATE ('11-OCT-2001', 'DD-MON-YYYY')
+GROUP BY prod_category,
+		 country_region;
