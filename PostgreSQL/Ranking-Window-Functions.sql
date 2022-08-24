@@ -16,3 +16,13 @@ FROM 	 sh.sales s
 WHERE	 t.calendar_month_desc IN ('2000-09', '2000-10')
 GROUP BY ch.channel_desc,
 		 calendar_month_desc;
+/*
+|channel_desc|calendar_month_desc|sales_count   |col_rank|
+|------------|-------------------|--------------|--------|
+|Direct Sales|2000-09            |        11,995|1       |
+|Partners    |2000-09            |         6,165|2       |
+|Internet    |2000-09            |         1,887|3       |
+|Direct Sales|2000-10            |        12,584|4       |
+|Partners    |2000-10            |         7,508|5       |
+|Internet    |2000-10            |         1,450|6       |
+*/
