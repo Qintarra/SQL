@@ -2,6 +2,7 @@
 
 -- ROW_NUMBER
 
+--Display the sales amount by the channels for 09.2000 - 10.2000 and rank all rows of the data set by the sales amount
 SELECT	 ch.channel_desc,
 		 t.calendar_month_desc,
 		 TO_CHAR (TRUNC (SUM (amount_sold), -5), '9,999,999,999') AS sales$,
