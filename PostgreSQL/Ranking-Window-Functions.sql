@@ -81,6 +81,7 @@ GROUP BY ch.channel_desc,
 */
 --
 
+-- RANK vs DENSE_RANK
 SELECT	 ch.channel_desc,
 		 t.calendar_month_desc,
 		 TO_CHAR (TRUNC (SUM (amount_sold), -5), '9,999,999,999') AS sales$,
