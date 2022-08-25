@@ -55,6 +55,7 @@ GROUP BY ch.channel_desc,
 
 -- ROW_NUMBER vs RANK vs DENSE_RANK
 
+-- RANK on Multiple Expressions
 SELECT	 ch.channel_desc,
 		 t.calendar_month_desc,
 		 TO_CHAR (SUM (quantity_sold), '9,999,999,999') AS sales_count,
