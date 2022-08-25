@@ -27,6 +27,7 @@ GROUP BY ch.channel_desc,
 |Internet    |2000-10            |         1,450|6       |
 */
 
+-- Now rank the rows not whithin the entire data set, but within the partition by channels
 SELECT	 ch.channel_desc,
 		 t.calendar_month_desc,
 		 TO_CHAR (TRUNC (SUM (amount_sold), -5), '9,999,999,999') AS sales$,
