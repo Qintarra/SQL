@@ -40,3 +40,14 @@ FROM 	 sh.sales s
 WHERE	 t.calendar_month_desc IN ('2000-09', '2000-10')
 GROUP BY ch.channel_desc,
 		 calendar_month_desc;
+/*
+|channel_desc|calendar_month_desc|sales$        |row_number|
+|------------|-------------------|--------------|----------|
+|Direct Sales|2000-09            |     1,200,000|1         |
+|Direct Sales|2000-10            |     1,200,000|2         |
+|Partners    |2000-09            |       600,000|3         |
+|Partners    |2000-10            |       600,000|4         |
+|Internet    |2000-09            |       200,000|5         |
+|Internet    |2000-10            |       200,000|6         |
+*/
+--
