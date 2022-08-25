@@ -52,3 +52,5 @@ GROUP BY ch.channel_desc,
 |Internet    |2000-10            |       200,000|6         |
 */
 --
+
+-- ROW_NUMBER vs RANK vs DENSE_RANK
