@@ -163,3 +163,4 @@ ORDER BY 1, 4, 5;
 |Internet    |2000-09            |       228,241|2                |3                  |
 |Internet    |2000-08            |       215,107|2                |4                  |
 */
+-- rewrite this example with an alternative syntax
