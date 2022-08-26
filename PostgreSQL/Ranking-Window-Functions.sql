@@ -151,3 +151,15 @@ AND		 ch.channel_desc IN ('Direct Sales', 'Internet')
 GROUP BY ch.channel_desc,
 		 calendar_month_desc
 ORDER BY 1, 4, 5;
+/*
+|channel_desc|calendar_month_desc|sales$        |rank_within_month|rank_within_channel|
+|------------|-------------------|--------------|-----------------|-------------------|
+|Direct Sales|2000-08            |     1,236,104|1                |1                  |
+|Direct Sales|2000-10            |     1,225,584|1                |2                  |
+|Direct Sales|2000-09            |     1,217,808|1                |3                  |
+|Direct Sales|2000-11            |     1,115,239|1                |4                  |
+|Internet    |2000-11            |       284,742|2                |1                  |
+|Internet    |2000-10            |       239,236|2                |2                  |
+|Internet    |2000-09            |       228,241|2                |3                  |
+|Internet    |2000-08            |       215,107|2                |4                  |
+*/
