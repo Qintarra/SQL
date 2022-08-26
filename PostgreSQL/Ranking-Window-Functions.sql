@@ -109,3 +109,17 @@ GROUP BY ch.channel_desc,
 --
 
 -- RANK + PARTITION BY
+SELECT	 ch.channel_desc,
+		 t.calendar_month_desc,
+		 TO_CHAR (SUM (amount_sold), '9,999,999,999') AS sales$,
+		 RANK () OVER (PARTITION BY ch.channel_desc ORDER BY SUM (amount_sold) DESC) AS rank_by_channel
+FROM 	 sh.sales s 
+ JOIN	 sh.products p ON p.prod_id = s.prod_id 
+ JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+ JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+WHERE	 t.calendar_month_desc IN ('2000-08', '2000-09', '2000-10', '2000-11')
+AND		 ch.channel_desc IN ('Direct Sales', 'Internet')
+GROUP BY ch.channel_desc,
+		 calendar_month_desc;
