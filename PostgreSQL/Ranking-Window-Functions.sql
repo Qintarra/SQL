@@ -137,6 +137,7 @@ GROUP BY ch.channel_desc,
 */
 --
 
+-- Per Group Ranking
 SELECT	 ch.channel_desc,
 		 t.calendar_month_desc,
 		 TO_CHAR (SUM (amount_sold), '9,999,999,999') AS sales$,
