@@ -107,3 +107,5 @@ GROUP BY ch.channel_desc,
 |Internet    |2000-10            |       200,000|5   |3         |
 */
 --
+
+-- RANK + PARTITION BY
