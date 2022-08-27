@@ -8,7 +8,7 @@ CREATE SCHEMA training_data;
 
 CREATE TABLE training_data.dim_groups
 (
-	group_id		BIGSERIAL PRIMARY KEY, -- constraint
+	group_id        BIGSERIAL PRIMARY KEY, -- constraint
 	group_number	INTEGER NOT NULL, -- natural key
 	creation_year	INTEGER DEFAULT EXTRACT (year FROM current_date),
 	disband_year	INTEGER
@@ -22,14 +22,14 @@ SELECT * FROM training_data.dim_groups; -- check the value
 
 CREATE TABLE training_data.dim_trainees
 (
-	trainee_id		BIGSERIAL PRIMARY KEY,
-	group_id		BIGINT NOT NULL REFERENCES training_data.dim_groups,
-	first_name		TEXT NOT NULL,
-	last_name		TEXT NOT NULL,
-	full_name		TEXT GENERATED ALWAYS AS (first_name || ' ' || last_name) STORED NOT NULL, -- stroed on disc after being generated
-	birth_date		DATE NOT NULL,
-	enrollment_year INTEGER DEFAULT EXTRACT (year FROM current_date) NOT NULL,
-	graduation_year INTEGER
+    trainee_id      BIGSERIAL PRIMARY KEY,
+    group_id        BIGINT NOT NULL REFERENCES training_data.dim_groups,
+    first_name      TEXT NOT NULL,
+    last_name       TEXT NOT NULL,
+    full_name       TEXT GENERATED ALWAYS AS (first_name || ' ' || last_name) STORED NOT NULL, -- stroed on disc after being generated
+    birth_date      DATE NOT NULL,
+    enrollment_year INTEGER DEFAULT EXTRACT (year FROM current_date) NOT NULL,
+    graduation_year INTEGER
 );
 
 INSERT INTO training_data.dim_trainees(group_id, first_name, last_name, birth_date)
@@ -42,10 +42,10 @@ VALUES (1, 'Rocky', 'Balboa', '1945-07-06'::DATE)
 CREATE VIEW active_trainees_snapshot AS
 
 SELECT  g.group_id,
-		g.group_number,
-		t.trainee_id,
-		t.full_name,
-		current_date AS snapshot_date
+        g.group_number,
+        t.trainee_id,
+        t.full_name,
+        current_date AS snapshot_date
 FROM	training_data.dim_groups g 
 JOIN 	training_data.dim_trainees t 
 ON   	g.group_id = t.group_id
@@ -106,16 +106,16 @@ LANGUAGE plpgsql
 
 AS $$
 DECLARE
-		v_group_id BIGINT;
+        v_group_id BIGINT;
 		
 BEGIN
-		INSERT INTO training_data.dim_groups(group_number) 
-		VALUES (i_group_number)
-		RETURNING group_id INTO v_group_id;
+        INSERT INTO training_data.dim_groups(group_number) 
+        VALUES (i_group_number)
+        RETURNING group_id INTO v_group_id;
 		
-		RAISE NOTICE 'New group % added! ID = %', i_group_number, v_group_id; -- to demonstrate the work of wthe function we display a text message
+        RAISE NOTICE 'New group % added! ID = %', i_group_number, v_group_id; -- to demonstrate the work of wthe function we display a text message
 		
-		RETURN v_group_id;
+        RETURN v_group_id;
 END;
 $$;
 
