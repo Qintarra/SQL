@@ -164,3 +164,19 @@ ORDER BY 1, 4, 5;
 |Internet    |2000-08            |       215,107|2                |4                  |
 */
 -- rewrite this example with an alternative syntax
+SELECT	 ch.channel_desc,
+		 t.calendar_month_desc,
+		 TO_CHAR (SUM (amount_sold), '9,999,999,999') AS sales$,
+		 RANK () OVER month_w AS rank_within_month,
+		 RANK () OVER channel_w AS rank_within_channel
+FROM 	 sh.sales s 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+WHERE	 t.calendar_month_desc IN ('2000-08', '2000-09', '2000-10', '2000-11')
+AND		 ch.channel_desc IN ('Direct Sales', 'Internet')
+GROUP BY ch.channel_desc,
+		 calendar_month_desc
+WINDOW	 month_w AS (PARTITION BY calendar_month_desc ORDER BY SUM (amount_sold) DESC),
+		 channel_w AS (PARTITION BY ch.channel_desc ORDER BY SUM (amount_sold) DESC)
+ORDER BY 1, 4, 5;
+--
