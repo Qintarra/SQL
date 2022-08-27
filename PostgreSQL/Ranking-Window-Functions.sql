@@ -120,7 +120,7 @@ FROM 	 sh.sales s
  JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
  JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
 WHERE	 t.calendar_month_desc IN ('2000-08', '2000-09', '2000-10', '2000-11')
-AND		 ch.channel_desc IN ('Direct Sales', 'Internet')
+AND      ch.channel_desc IN ('Direct Sales', 'Internet')
 GROUP BY ch.channel_desc,
          calendar_month_desc;
 /*
@@ -147,7 +147,7 @@ FROM 	 sh.sales s
  JOIN 	 sh.times t ON t.time_id = s.time_id 
  JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
 WHERE	 t.calendar_month_desc IN ('2000-08', '2000-09', '2000-10', '2000-11')
-AND		 ch.channel_desc IN ('Direct Sales', 'Internet')
+AND      ch.channel_desc IN ('Direct Sales', 'Internet')
 GROUP BY ch.channel_desc,
          calendar_month_desc
 ORDER BY 1, 4, 5;
@@ -173,7 +173,7 @@ FROM 	 sh.sales s
  JOIN 	 sh.times t ON t.time_id = s.time_id 
  JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
 WHERE	 t.calendar_month_desc IN ('2000-08', '2000-09', '2000-10', '2000-11')
-AND		 ch.channel_desc IN ('Direct Sales', 'Internet')
+AND      ch.channel_desc IN ('Direct Sales', 'Internet')
 GROUP BY ch.channel_desc,
          calendar_month_desc
 WINDOW	 month_w AS (PARTITION BY calendar_month_desc ORDER BY SUM (amount_sold) DESC),
