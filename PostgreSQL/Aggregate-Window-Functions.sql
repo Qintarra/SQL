@@ -39,7 +39,7 @@ FROM 	 sh.sales s
 WHERE	 t.calendar_month_desc IN ('2000-09', '2000-10')
 AND 	 cn.country_iso_code IN ('AU', 'BR', 'CA', 'DE')
 GROUP BY cn.country_name,
-		 ch.channel_desc 
+         ch.channel_desc 
 ORDER BY country_name;
 -- Note: the window function can take as an argument not only the name of the columns but also expressions (the Sum function in this case)
 /*
@@ -72,7 +72,7 @@ FROM 	 sh.sales s
  JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
 WHERE	 time_id = TO_DATE ('11-OCT-2001', 'DD-MON-YYYY')
 GROUP BY prod_category,
-		 country_region;
+         country_region;
 /*
 |prod_category              |country_region|sales   |max_reg_sales|
 |---------------------------|--------------|--------|-------------|
