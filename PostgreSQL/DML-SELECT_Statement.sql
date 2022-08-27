@@ -150,13 +150,13 @@ ORDER BY count_of_film DESC;
 
 -- three longest films and actors, who played there
 SELECT  max_length_film.title AS movie_title,
-		a.first_name || ' ' || a.last_name AS actor_full_name,
-		length as minutes_length
+        a.first_name || ' ' || a.last_name AS actor_full_name,
+        length as minutes_length
 FROM 
-	(SELECT * 
-	FROM film f 
-	ORDER BY f.length DESC 
-	LIMIT (3)) AS max_length_film
+   (SELECT * 
+    FROM film f 
+    ORDER BY f.length DESC 
+    LIMIT (3)) AS max_length_film
 INNER JOIN film_actor fa
 ON fa.film_id = max_length_film.film_id
 INNER JOIN actor a
@@ -167,10 +167,10 @@ ON a.actor_id = fa.actor_id;
 SELECT fa.film_id
 FROM film_actor fa
 WHERE fa.actor_id = 
-					(SELECT a.actor_id
-					 FROM actor a 
-					 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'
-					 );
+                    (SELECT a.actor_id
+                     FROM actor a 
+                     WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'
+                     );
 --
 
 -- amount of movies, where Tom Hanks played with the name of the movies				 
@@ -178,26 +178,26 @@ SELECT  f.title,
 		f.release_year
 FROM film f
 WHERE f.film_id IN (
-					SELECT fa.film_id
-					FROM film_actor fa
-					WHERE fa.actor_id = 
-										(SELECT a.actor_id
-										 FROM actor a 
-										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'));
+                    SELECT fa.film_id
+                    FROM film_actor fa
+                    WHERE fa.actor_id = 
+                                        (SELECT a.actor_id
+                                         FROM actor a 
+                                         WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'));
 --
 
 -- same, but with EXISTS operator
 SELECT  f.title,
-		f.release_year
+        f.release_year
 FROM film f
 WHERE EXISTS (
-					SELECT fa.film_id
-					FROM film_actor fa
-					WHERE fa.actor_id = 
-										(SELECT a.actor_id
-										 FROM actor a 
-										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS')
-					AND f.film_id = fa.film_id);  -- filtering
+                    SELECT fa.film_id
+                    FROM film_actor fa
+                    WHERE fa.actor_id = 
+                                        (SELECT a.actor_id
+                                         FROM actor a 
+                                         WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS')
+                    AND f.film_id = fa.film_id);  -- filtering
 --
 
 SELECT 2 IN (1, 4, 5, 7); -- false
@@ -211,31 +211,31 @@ SELECT 2 NOT IN (1, 4, 5, 7, NULL); -- NULL
 
 -- same, but move logic into the query using the JOIN
 SELECT  f.title,
-		f.release_year
+        f.release_year
 FROM film f
 INNER JOIN film_actor fa
 ON fa.film_id = f.film_id
 WHERE fa.actor_id = 
-					(SELECT a.actor_id
-					 FROM actor a 
-					 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'
-					 );
+                    (SELECT a.actor_id
+                     FROM actor a 
+                     WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'
+                     );
 --
 
 -- Common Table Expressions:
 WITH film_tom_hanks AS
 (SELECT fa.film_id
-					FROM film_actor fa
-					WHERE fa.actor_id = 
-										(SELECT a.actor_id
-										 FROM actor a 
-										 WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'))
+                    FROM film_actor fa
+                    WHERE fa.actor_id = 
+                                        (SELECT a.actor_id
+                                         FROM actor a 
+                                         WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'))
 SELECT  f.title,
 		f.release_year
 FROM film f
 WHERE f.film_id IN (SELECT film_id
-					FROM film_tom_hanks
-					);
+                    FROM film_tom_hanks
+                    );
 --
 
 -- top 3 longest films (title, release year, length)
@@ -243,16 +243,16 @@ WHERE f.film_id IN (SELECT film_id
 -- rated PG-13 or higher
 -- available in at least two DVD rental shops
 SELECT  f.title, 
-		f.release_year, 
-		f.length 
+        f.release_year, 
+        f.length 
 FROM film f 
 WHERE f.release_year >= EXTRACT (YEAR FROM current_date) - 10 
 AND f.rating IN ('PG-13', 'R', 'NC-17') -- f.rating >= 'PG-13' 
 AND f.film_id IN (
-					SELECT inv.film_id
-					FROM inventory inv
-					GROUP BY inv.film_id
-					HAVING COUNT(DISTINCT inv.store_id) >= 2)
+                    SELECT inv.film_id
+                    FROM inventory inv
+                    GROUP BY inv.film_id
+                    HAVING COUNT(DISTINCT inv.store_id) >= 2)
 ORDER BY f.length DESC
 LIMIT 3;
 --
