@@ -175,7 +175,7 @@ WHERE fa.actor_id =
 
 -- amount of movies, where Tom Hanks played with the name of the movies				 
 SELECT  f.title,
-		f.release_year
+        f.release_year
 FROM film f
 WHERE f.film_id IN (
                     SELECT fa.film_id
@@ -231,7 +231,7 @@ WITH film_tom_hanks AS
                                          FROM actor a 
                                          WHERE UPPER (a.first_name) = 'TOM' AND UPPER (a.last_name) = 'HANKS'))
 SELECT  f.title,
-		f.release_year
+        f.release_year
 FROM film f
 WHERE f.film_id IN (SELECT film_id
                     FROM film_tom_hanks
@@ -247,7 +247,7 @@ SELECT  f.title,
         f.length 
 FROM film f 
 WHERE f.release_year >= EXTRACT (YEAR FROM current_date) - 10 
-AND f.rating IN ('PG-13', 'R', 'NC-17') -- f.rating >= 'PG-13' 
+AND f.rating  IN ('PG-13', 'R', 'NC-17') -- f.rating >= 'PG-13' 
 AND f.film_id IN (
                     SELECT inv.film_id
                     FROM inventory inv
