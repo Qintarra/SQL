@@ -3,10 +3,10 @@
 -- AVG() + PARTITION BY
 -- Calculate the average value of the products on product subcategories
 SELECT  prod_id,
-		prod_name,
-		prod_subcategory,
-		prod_list_price,
-		ROUND (AVG (prod_list_price) OVER (PARTITION BY prod_subcategory), 2) -- OVER keyword signals a window function
+        prod_name,
+        prod_subcategory,
+        prod_list_price,
+        ROUND (AVG (prod_list_price) OVER (PARTITION BY prod_subcategory), 2) -- OVER keyword signals a window function
 FROM 	sh.products
 WHERE 	prod_subcategory IN ('Bulk Pack Diskettes', 'Camera Media', 'Printer Supplies');
 /*
@@ -27,9 +27,9 @@ WHERE 	prod_subcategory IN ('Bulk Pack Diskettes', 'Camera Media', 'Printer Supp
 -- SUM() + PARTITION BY
 -- Get the sales amount by channels and countries for 09.2000 - 10.2000 and the total sales amount by countries
 SELECT	 cn.country_name,
-		 ch.channel_desc,
-		 SUM (amount_sold) AS sales$,
-		 SUM (SUM (amount_sold)) OVER (PARTITION BY cn.country_name) AS all_channels_sales$ 
+         ch.channel_desc,
+         SUM (amount_sold) AS sales$,
+         SUM (SUM (amount_sold)) OVER (PARTITION BY cn.country_name) AS all_channels_sales$ 
 FROM 	 sh.sales s 
  JOIN	 sh.products p ON p.prod_id = s.prod_id 
  JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
@@ -62,9 +62,9 @@ ORDER BY country_name;
 -- TASK. For each product category, find the region in which it had maximum sales
 --part 1:
 SELECT	 prod_category,
-		 country_region,
-		 SUM (s.amount_sold) AS sales,
-		 MAX (SUM (amount_sold)) OVER (PARTITION BY p.prod_category) AS max_reg_sales -- window function MAX will find the maximum value of sales for each product category
+         country_region,
+         SUM (s.amount_sold) AS sales,
+         MAX (SUM (amount_sold)) OVER (PARTITION BY p.prod_category) AS max_reg_sales -- window function MAX will find the maximum value of sales for each product category
 FROM 	 sh.sales s 
  JOIN	 sh.products p ON p.prod_id = s.prod_id 
  JOIN	 sh.customers cust ON cust.cust_id = s.cust_id  
@@ -89,22 +89,22 @@ GROUP BY prod_category,
 */
 -- part 2:
 SELECT 	prod_category,
-		country_region,
-		sales
+        country_region,
+        sales
 FROM	(
-		SELECT	 prod_category,
-				 country_region,
-				 SUM (s.amount_sold) AS sales,
-				 MAX (SUM (amount_sold)) OVER (PARTITION BY p.prod_category) AS max_reg_sales
-		FROM 	 sh.sales s 
-		 JOIN	 sh.products p ON p.prod_id = s.prod_id 
-		 JOIN	 sh.customers cust ON cust.cust_id = s.cust_id  
-		 JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
-		 JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
-		WHERE	 time_id = TO_DATE ('11-OCT-2001', 'DD-MON-YYYY')
-		GROUP BY prod_category,
-				 country_region
-		) tab
+        SELECT	 prod_category,
+                 country_region,
+                 SUM (s.amount_sold) AS sales,
+                 MAX (SUM (amount_sold)) OVER (PARTITION BY p.prod_category) AS max_reg_sales
+        FROM 	 sh.sales s 
+         JOIN	 sh.products p ON p.prod_id = s.prod_id 
+         JOIN	 sh.customers cust ON cust.cust_id = s.cust_id  
+         JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+         JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+        WHERE	 time_id = TO_DATE ('11-OCT-2001', 'DD-MON-YYYY')
+        GROUP BY prod_category,
+                 country_region
+        ) tab
 WHERE 	sales = max_reg_sales;
 /*
 |prod_category              |country_region|sales   |
