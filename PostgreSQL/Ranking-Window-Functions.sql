@@ -180,3 +180,5 @@ WINDOW	 month_w AS (PARTITION BY calendar_month_desc ORDER BY SUM (amount_sold) 
          channel_w AS (PARTITION BY ch.channel_desc ORDER BY SUM (amount_sold) DESC)
 ORDER BY 1, 4, 5;
 --
+
+-- Threatment of NULLs
