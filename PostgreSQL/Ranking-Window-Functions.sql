@@ -283,3 +283,23 @@ FROM sh.sales s
 WHERE	 t.calendar_month_desc IN ('2000-09', '2000-07', '2000-08')
 GROUP BY calendar_month_desc,
          p.prod_category;
+/*
+|calendar_month_desc|prod_category              |sales$        |cume_dist_prod_cat|
+|-------------------|---------------------------|--------------|------------------|
+|2000-07            |Software/Other             |       295,419|0.2               |
+|2000-07            |Hardware                   |       323,381|0.4               |
+|2000-07            |Photo                      |       345,301|0.6               |
+|2000-07            |Electronics                |       433,824|0.8               |
+|2000-07            |Peripherals and Accessories|       498,838|1                 |
+|2000-08            |Software/Other             |       316,150|0.2               |
+|2000-08            |Hardware                   |       338,568|0.4               |
+|2000-08            |Photo                      |       411,670|0.6               |
+|2000-08            |Electronics                |       477,833|0.8               |
+|2000-08            |Peripherals and Accessories|       568,034|1                 |
+|2000-09            |Software/Other             |       245,110|0.2               |
+|2000-09            |Photo                      |       324,898|0.4               |
+|2000-09            |Hardware                   |       339,536|0.6               |
+|2000-09            |Peripherals and Accessories|       511,227|0.8               |
+|2000-09            |Electronics                |       691,449|1                 |
+*/
+--
