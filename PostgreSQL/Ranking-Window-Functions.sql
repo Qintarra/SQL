@@ -237,3 +237,18 @@ ORDER BY sold DESC NULLS LAST;
 |1999-01-31|         |20        |1          |1     |20   |
 */
 --
+
+-- NTILE Function
+SELECT	 calendar_month_desc,
+		 TO_CHAR (SUM (s.amount_sold), '9,999,999,999') AS sales$,
+		 NTILE (4) OVER (ORDER BY SUM (amount_sold)) AS tile4,
+		 NTILE (5) OVER (ORDER BY SUM (amount_sold)) AS tile5,
+		 NTILE (15) OVER (ORDER BY SUM (amount_sold)) AS tile15
+FROM sh.sales s 
+ JOIN	 sh.products p ON p.prod_id = s.prod_id 
+ JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+WHERE	 t.calendar_year = 2000
+AND 	 prod_category = 'Electronics'
+GROUP BY calendar_month_desc;
