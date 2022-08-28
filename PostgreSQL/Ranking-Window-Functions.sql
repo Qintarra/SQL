@@ -182,3 +182,22 @@ ORDER BY 1, 4, 5;
 --
 
 -- Threatment of NULLs
+SELECT	 t.time_id, sold,
+         RANK () OVER (ORDER BY sold DESC NULLS LAST) AS nlast_desc,
+         RANK () OVER (ORDER BY sold DESC NULLS FIRST) AS nfirst_desc,
+         RANK () OVER (ORDER BY sold ASC NULLS FIRST) AS nfirst,
+         RANK () OVER (ORDER BY sold ASC NULLS LAST) AS nlast
+FROM 
+  (SELECT time_id,
+          SUM (amount_sold) AS sold 
+   FROM	  sh.sales s 
+    JOIN	 sh.products p ON (p.prod_id = s.prod_id) 
+    JOIN	 sh.customers cust ON (cust.cust_id = s.cust_id) 
+    JOIN  sh.countries cn ON (cn.country_id = cust.country_id)
+   WHERE  prod_name IN ('Envoy Ambassador', 'Mouse Pad')
+   GROUP BY time_id 
+  ) tab 
+ RIGHT JOIN sh.times t ON tab.time_id = t.time_id 
+WHERE	t.calendar_year = 1999
+AND		t.calendar_month_number = 1
+ORDER BY sold DESC NULLS LAST;
