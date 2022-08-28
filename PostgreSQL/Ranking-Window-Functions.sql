@@ -240,10 +240,10 @@ ORDER BY sold DESC NULLS LAST;
 
 -- NTILE Function
 SELECT	 calendar_month_desc,
-		 TO_CHAR (SUM (s.amount_sold), '9,999,999,999') AS sales$,
-		 NTILE (4) OVER (ORDER BY SUM (amount_sold)) AS tile4,
-		 NTILE (5) OVER (ORDER BY SUM (amount_sold)) AS tile5,
-		 NTILE (15) OVER (ORDER BY SUM (amount_sold)) AS tile15
+         TO_CHAR (SUM (s.amount_sold), '9,999,999,999') AS sales$,
+         NTILE (4) OVER (ORDER BY SUM (amount_sold)) AS tile4,
+         NTILE (5) OVER (ORDER BY SUM (amount_sold)) AS tile5,
+         NTILE (15) OVER (ORDER BY SUM (amount_sold)) AS tile15
 FROM sh.sales s 
  JOIN	 sh.products p ON p.prod_id = s.prod_id 
  JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
@@ -252,3 +252,21 @@ FROM sh.sales s
 WHERE	 t.calendar_year = 2000
 AND 	 prod_category = 'Electronics'
 GROUP BY calendar_month_desc;
+/*
+|calendar_month_desc|sales$        |tile4|tile5|tile15|
+|-------------------|--------------|-----|-----|------|
+|2000-02            |       242,416|1    |1    |1     |
+|2000-01            |       257,286|1    |1    |2     |
+|2000-03            |       280,011|1    |1    |3     |
+|2000-06            |       315,951|2    |2    |4     |
+|2000-05            |       316,824|2    |2    |5     |
+|2000-04            |       318,106|2    |2    |6     |
+|2000-07            |       433,824|3    |3    |7     |
+|2000-08            |       477,833|3    |3    |8     |
+|2000-12            |       553,534|3    |4    |9     |
+|2000-10            |       652,225|4    |4    |10    |
+|2000-11            |       661,147|4    |5    |11    |
+|2000-09            |       691,449|4    |5    |12    |
+*/
+--
+
