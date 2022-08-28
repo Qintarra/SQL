@@ -305,3 +305,16 @@ GROUP BY calendar_month_desc,
 --
 
 -- TASK. Find the 5 top-selling products for each product subcategory that contributes more than 20% of the sales within its product category
+-- part 1:
+SELECT	 prod_category, prod_subcategory, p.prod_id, SUM(amount_sold) AS sales
+FROM 	 sh.sales s 
+ JOIN	 sh.products p ON p.prod_id = s.prod_id 
+ JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+ JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+WHERE	 time_id = TO_DATE ('11-OCT-2000', 'DD-MON-YYYY')
+GROUP BY prod_category, 
+         prod_subcategory, 
+         p.prod_id
+ORDER BY prod_category, 
+         prod_subcategory;
