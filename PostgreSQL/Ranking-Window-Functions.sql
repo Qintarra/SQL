@@ -270,3 +270,16 @@ GROUP BY calendar_month_desc;
 */
 --
 
+-- CUME_DIST
+SELECT	 calendar_month_desc,
+         p.prod_category,
+         TO_CHAR (SUM (s.amount_sold), '9,999,999,999') AS sales$,
+         CUME_DIST() OVER (PARTITION BY calendar_month_desc ORDER BY SUM(s.amount_sold)) AS cume_dist_prod_cat
+FROM sh.sales s 
+ JOIN	 sh.products p ON p.prod_id = s.prod_id 
+ JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+WHERE	 t.calendar_month_desc IN ('2000-09', '2000-07', '2000-08')
+GROUP BY calendar_month_desc,
+         p.prod_category;
