@@ -303,3 +303,5 @@ GROUP BY calendar_month_desc,
 |2000-09            |Electronics                |       691,449|1                 |
 */
 --
+
+-- TASK. Find the 5 top-selling products for each product subcategory that contributes more than 20% of the sales within its product category
