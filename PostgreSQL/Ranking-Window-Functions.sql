@@ -356,3 +356,18 @@ FROM   (
 		) tab 
 WHERE 	subcat_sales > 0.2*cat_sales
 AND 	rank_in_line <= 5;
+/*
+|prod_category              |prod_subcategory    |prod_id|sales    |
+|---------------------------|--------------------|-------|---------|
+|Peripherals and Accessories|Printer Supplies    |127    |2,264.61 |
+|Peripherals and Accessories|Printer Supplies    |129    |11,606.65|
+|Peripherals and Accessories|Printer Supplies    |128    |2,104.9  |
+|Software/Other             |Recordable CDs      |114    |487.9    |
+|Software/Other             |Recordable CDs      |116    |358.96   |
+|Software/Other             |Recordable CDs      |117    |260.28   |
+|Software/Other             |Recordable CDs      |119    |246.54   |
+|Software/Other             |Recordable CDs      |118    |239.12   |
+|Software/Other             |Recordable DVD Discs|124    |1,405.65 |
+|Software/Other             |Recordable DVD Discs|123    |3,032.13 |
+*/
+--
