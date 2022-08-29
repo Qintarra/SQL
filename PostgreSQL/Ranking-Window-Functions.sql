@@ -335,3 +335,24 @@ ORDER BY prod_category,
 |Software/Other             |Recordable DVD Discs|124    |1,405.65 |
 |Software/Other             |Recordable DVD Discs|123    |3,032.13 |
 */
+-- part 2:
+SELECT	 prod_category, prod_subcategory, prod_id, sales
+FROM   (
+		SELECT	 prod_category, prod_subcategory, p.prod_id, SUM(amount_sold) AS sales,
+				 SUM (SUM (amount_sold)) OVER (PARTITION BY prod_category) AS cat_sales,
+				 SUM (SUM (amount_sold)) OVER (PARTITION BY prod_subcategory) AS subcat_sales,
+				 RANK() OVER (PARTITION BY prod_subcategory ORDER BY SUM (amount_sold) DESC) AS rank_in_line
+		FROM 	 sh.sales s 
+		 JOIN	 sh.products p ON p.prod_id = s.prod_id 
+		 JOIN	 sh.customers cust ON cust.cust_id = s.cust_id 
+		 JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+		 JOIN 	 sh.countries cn ON cn.country_id = cust.country_id
+		WHERE	 time_id = TO_DATE ('11-OCT-2000', 'DD-MON-YYYY')
+		GROUP BY p.prod_category, 
+				 prod_subcategory, 
+				 p.prod_id
+		ORDER BY p.prod_category, 
+				 prod_subcategory
+		) tab 
+WHERE 	subcat_sales > 0.2*cat_sales
+AND 	rank_in_line <= 5;
