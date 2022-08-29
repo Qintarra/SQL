@@ -318,3 +318,20 @@ GROUP BY prod_category,
          p.prod_id
 ORDER BY prod_category, 
          prod_subcategory;
+/*
+|prod_category              |prod_subcategory    |prod_id|sales    |
+|---------------------------|--------------------|-------|---------|
+|Peripherals and Accessories|Printer Supplies    |129    |11,606.65|
+|Peripherals and Accessories|Printer Supplies    |128    |2,104.9  |
+|Peripherals and Accessories|Printer Supplies    |127    |2,264.61 |
+|Software/Other             |Bulk Pack Diskettes |125    |391.89   |
+|Software/Other             |Bulk Pack Diskettes |126    |563.55   |
+|Software/Other             |Recordable CDs      |119    |246.54   |
+|Software/Other             |Recordable CDs      |114    |487.9    |
+|Software/Other             |Recordable CDs      |115    |221.27   |
+|Software/Other             |Recordable CDs      |116    |358.96   |
+|Software/Other             |Recordable CDs      |117    |260.28   |
+|Software/Other             |Recordable CDs      |118    |239.12   |
+|Software/Other             |Recordable DVD Discs|124    |1,405.65 |
+|Software/Other             |Recordable DVD Discs|123    |3,032.13 |
+*/
