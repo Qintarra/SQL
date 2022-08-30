@@ -86,3 +86,5 @@ ORDER BY 2;
 |Partners    |4                    |2,091,816.42|2,091,816.42   |
 |Direct Sales|4                    |4,578,892.91|4,578,892.91   |
 */
+--If window frames are not defined, the function LAST_VALUE will always return a value of the current role
+--
