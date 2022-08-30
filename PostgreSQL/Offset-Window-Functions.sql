@@ -55,3 +55,16 @@ ORDER BY 2;
 |Direct Sales|4                    |4,578,892.91|42,712.02      |
 */
 --
+
+SELECT	 channel_desc,
+         calendar_month_number,
+         SUM (amount_sold) AS sales$,
+         LAST_VALUE (SUM (amount_sold)) OVER (PARTITION BY calendar_month_number ORDER BY SUM (amount_sold))
+         AS miax_sales_month
+FROM	 sh.sales s
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id 
+WHERE 	 calendar_month_number IN (1, 2, 3, 4)
+GROUP BY channel_desc,
+         calendar_month_number
+ORDER BY 2;
