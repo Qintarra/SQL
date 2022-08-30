@@ -68,3 +68,21 @@ WHERE 	 calendar_month_number IN (1, 2, 3, 4)
 GROUP BY channel_desc,
          calendar_month_number
 ORDER BY 2;
+/*
+|channel_desc|calendar_month_number|sales$      |max_sales_month|
+|------------|---------------------|------------|---------------|
+|Internet    |1                    |679,299.05  |679,299.05     |
+|Partners    |1                    |2,092,590.24|2,092,590.24   |
+|Direct Sales|1                    |5,703,058.55|5,703,058.55   |
+|Internet    |2                    |1,018,813.31|1,018,813.31   |
+|Partners    |2                    |2,410,599.08|2,410,599.08   |
+|Direct Sales|2                    |5,522,651.25|5,522,651.25   |
+|Tele Sales  |3                    |53,395.37   |53,395.37      |
+|Internet    |3                    |1,069,167.19|1,069,167.19   |
+|Partners    |3                    |1,876,050.63|1,876,050.63   |
+|Direct Sales|3                    |4,680,793.47|4,680,793.47   |
+|Tele Sales  |4                    |42,712.02   |42,712.02      |
+|Internet    |4                    |981,296.96  |981,296.96     |
+|Partners    |4                    |2,091,816.42|2,091,816.42   |
+|Direct Sales|4                    |4,578,892.91|4,578,892.91   |
+*/
