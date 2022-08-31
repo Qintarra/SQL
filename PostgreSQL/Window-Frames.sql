@@ -32,3 +32,5 @@ ORDER BY c.cust_id,
 |11,111 |2000-04              |307.58  |963.82   |
 */
 --
+
+-- Cumulative amount_sold + Array_AGG
