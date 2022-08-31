@@ -34,3 +34,18 @@ ORDER BY c.cust_id,
 --
 
 -- Cumulative amount_sold + Array_AGG
+SELECT	 c.cust_id, t.calendar_quarter_desc,
+         SUM (amount_sold) AS q_sales,
+         SUM (SUM (amount_sold)) OVER w AS cum_sales,
+         ARRAY_AGG (SUM (amount_sold)) OVER w AS array_agg -- the ARRAY_AGG function show which values are included in the cumulative sum calculation
+FROM	 sh.sales s
+ JOIN	 sh.customers c ON c.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id  
+WHERE 	 c.cust_id IN (2959, 9646, 11111)
+AND		 t.calendar_year = 2000
+GROUP BY c.cust_id, 
+         t.calendar_quarter_desc
+WINDOW   w AS (PARTITION BY c.cust_id ORDER BY t.calendar_quarter_desc
+               RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+ORDER BY c.cust_id, 
+         t.calendar_quarter_desc;
