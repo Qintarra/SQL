@@ -64,3 +64,14 @@ ORDER BY c.cust_id,
 --
 
 -- Centerd moving average
+SELECT	 t.time_id,
+		 TO_CHAR (SUM (amount_sold), '9,999,999,999') AS sales,
+		 TO_CHAR (AVG(SUM (amount_sold)) OVER (ORDER BY t.time_id RANGE BETWEEN
+		 										INTERVAL '1' DAY PRECEDING AND 
+		 										INTERVAL '1' DAY FOLLOWING), '9,999,999,999') AS cent_3_day_avg
+FROM	 sh.sales s 
+ JOIN 	 sh.times t ON t.time_id = s.time_id  
+WHERE 	 t.calendar_week_number IN (51)
+AND		 t.calendar_year = 1999
+GROUP BY t.time_id
+ORDER BY t.time_id;
