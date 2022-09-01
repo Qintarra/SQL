@@ -86,3 +86,6 @@ ORDER BY t.time_id;
 |1999-12-25|        63,107|        87,062|
 |1999-12-26|        95,123|        79,115|
 */
+-- Shows the number of sales by day for one week
+-- The last column shows average sales of the previous day, the current day, and the next day
+--
