@@ -91,3 +91,27 @@ ORDER BY t.time_id;
 --
 
 -- Show the number of sales by the quarter for the year 2000
+SELECT		calendar_quarter_desc, q_sales,
+			CASE WHEN RIGHT (calendar_quarter_desc, 1) = '1' THEN 'N/A'
+				 ELSE TO_CHAR (prev_q, '9,999,999,990.99')
+			END AS prev_q,
+			CASE WHEN RIGHT (calendar_quarter_desc, 1) = '1' THEN 'N/A'
+				 ELSE TO_CHAR (q_sales - prev_q, '9,999,999,990.99')
+			END AS delta_q,
+			CASE WHEN RIGHT (calendar_quarter_desc, 1) = '1' THEN 'N/A'
+				 ELSE TO_CHAR ((q_sales - prev_q) / prev_q * 100, '9,999,999,990.99') || '%'
+			END AS delta_q_prc
+FROM (
+		SELECT	 t.calendar_quarter_desc,
+				 SUM (amount_sold) AS q_sales,
+				 FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_quarter_desc
+				 							  		   ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS prev_q
+		FROM	 sh.sales s 
+		 JOIN	 sh.products p ON p.prod_id = s.prod_id 
+		 JOIN	 sh.customers c ON c.cust_id = s.cust_id 
+		 JOIN 	 sh.times t ON t.time_id = s.time_id   
+		WHERE 	 t.calendar_year = 2000
+		AND		 c.cust_id IN (2595, 9646, 11111)
+		GROUP BY t.calendar_quarter_desc
+		) tab
+ORDER BY 1;
