@@ -89,3 +89,5 @@ ORDER BY t.time_id;
 -- Shows the number of sales by day for one week
 -- The last column shows average sales of the previous day, the current day, and the next day
 --
+
+-- Show the number of sales by the quarter for the year 2000
