@@ -10,7 +10,7 @@ FROM	 sh.sales s
  JOIN	 sh.customers c ON c.cust_id = s.cust_id 
  JOIN 	 sh.times t ON t.time_id = s.time_id  
 WHERE 	 c.cust_id IN (2595, 9646, 11111)
-AND		 t.calendar_year = 2000
+AND      t.calendar_year = 2000
 GROUP BY c.cust_id, 
          t.calendar_quarter_desc
 ORDER BY c.cust_id, 
@@ -42,7 +42,7 @@ FROM	 sh.sales s
  JOIN	 sh.customers c ON c.cust_id = s.cust_id 
  JOIN 	 sh.times t ON t.time_id = s.time_id  
 WHERE 	 c.cust_id IN (2959, 9646, 11111)
-AND		 t.calendar_year = 2000
+AND      t.calendar_year = 2000
 GROUP BY c.cust_id, 
          t.calendar_quarter_desc
 WINDOW   w AS (PARTITION BY c.cust_id ORDER BY t.calendar_quarter_desc
@@ -72,7 +72,7 @@ SELECT	 t.time_id,
 FROM	 sh.sales s 
  JOIN 	 sh.times t ON t.time_id = s.time_id  
 WHERE 	 t.calendar_week_number IN (51)
-AND		 t.calendar_year = 1999
+AND      t.calendar_year = 1999
 GROUP BY t.time_id
 ORDER BY t.time_id;
 /*
