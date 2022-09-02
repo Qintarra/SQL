@@ -102,18 +102,18 @@ SELECT      calendar_quarter_desc, q_sales,
                  ELSE TO_CHAR ((q_sales - prev_q) / prev_q * 100, '9,999,999,990.99') || '%'
             END AS delta_q_prc
 FROM (
-		SELECT	 t.calendar_quarter_desc,
+        SELECT	 t.calendar_quarter_desc,
                  SUM (amount_sold) AS q_sales,
                  FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_quarter_desc
                                                        ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) AS prev_q
-		FROM	 sh.sales s 
-		 JOIN	 sh.products p ON p.prod_id = s.prod_id 
-		 JOIN	 sh.customers c ON c.cust_id = s.cust_id 
-		 JOIN 	 sh.times t ON t.time_id = s.time_id   
-		WHERE 	 t.calendar_year = 2000
-		AND		 c.cust_id IN (2595, 9646, 11111)
-		GROUP BY t.calendar_quarter_desc
-		) tab
+        FROM	 sh.sales s 
+         JOIN	 sh.products p ON p.prod_id = s.prod_id 
+         JOIN	 sh.customers c ON c.cust_id = s.cust_id 
+         JOIN 	 sh.times t ON t.time_id = s.time_id   
+        WHERE 	 t.calendar_year = 2000
+        AND      c.cust_id IN (2595, 9646, 11111)
+        GROUP BY t.calendar_quarter_desc
+        ) tab
 ORDER BY 1;
 /*
 |calendar_quarter_desc|q_sales |prev_q           |delta_q          |delta_q_prc       |
@@ -127,17 +127,17 @@ ORDER BY 1;
 
 -- RANGE vs GROUPS
 SELECT	 t.calendar_month_number,
-		 SUM (amount_sold) AS m_sales,
-		 FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_month_number
-		 		 		 		 		 	   RANGE BETWEEN 1 PRECEDING AND CURRENT ROW) AS range_first_value,
-		 FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_month_number
-		 		 		 		 		 	   GROUPS BETWEEN 1 PRECEDING AND CURRENT ROW) AS groups_first_value
+         SUM (amount_sold) AS m_sales,
+         FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_month_number
+                                               RANGE BETWEEN 1 PRECEDING AND CURRENT ROW) AS range_first_value,
+         FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_month_number
+                                               GROUPS BETWEEN 1 PRECEDING AND CURRENT ROW) AS groups_first_value
 FROM	 sh.sales s
  JOIN	 sh.customers c ON c.cust_id = s.cust_id 
  JOIN 	 sh.times t ON t.time_id = s.time_id 
  JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id
 WHERE 	 t.calendar_year = 1998
-AND		 ch.channel_desc = 'Tele Sales'
+AND      ch.channel_desc = 'Tele Sales'
 GROUP BY t.calendar_month_number
 ORDER BY t.calendar_month_number;
 /*
@@ -155,21 +155,21 @@ ORDER BY t.calendar_month_number;
 -- NTH_VALUE Function
 -- Provide quarterly sales information before the year 2000 for three custumers
 SELECT	 c.cust_id,
-		 t.calendar_quarter_desc,
-		 SUM (amount_sold) AS q_sales,
-		 FIRST_VALUE (SUM (amount_sold)) OVER w AS q1,
-		 NTH_VALUE (SUM (amount_sold), 2) OVER w AS q2,
-		 NTH_VALUE (SUM (amount_sold), 3) OVER w AS q3,
-		 LAST_VALUE (SUM (amount_sold)) OVER w AS q4		 
+         t.calendar_quarter_desc,
+         SUM (amount_sold) AS q_sales,
+         FIRST_VALUE (SUM (amount_sold)) OVER w AS q1,
+         NTH_VALUE (SUM (amount_sold), 2) OVER w AS q2,
+         NTH_VALUE (SUM (amount_sold), 3) OVER w AS q3,
+         LAST_VALUE (SUM (amount_sold)) OVER w AS q4		 
 FROM	 sh.sales s
  JOIN	 sh.customers c ON c.cust_id = s.cust_id 
  JOIN 	 sh.times t ON t.time_id = s.time_id 
 WHERE 	 t.calendar_year = 2000
-AND		 c.cust_id IN (2595, 9646, 11111)
+AND      c.cust_id IN (2595, 9646, 11111)
 GROUP BY c.cust_id,
-		 t.calendar_quarter_desc,
-		 t.calendar_quarter_number 
+         t.calendar_quarter_desc,
+         t.calendar_quarter_number 
 WINDOW   w AS (PARTITION BY c.cust_id ORDER BY c.cust_id, t.calendar_quarter_desc
-		 	   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) -- first row of the frame 
+               ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) -- first row of the frame 
 ORDER BY c.cust_id,
-		 t.calendar_quarter_desc;
+         t.calendar_quarter_desc;
