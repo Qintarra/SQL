@@ -151,3 +151,5 @@ ORDER BY t.calendar_month_number;
 |12                   |49,260.95|50,884.91        |50,884.91         |
 */
 --
+
+-- NTH_VALUE Function
