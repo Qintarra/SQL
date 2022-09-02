@@ -154,3 +154,22 @@ ORDER BY t.calendar_month_number;
 
 -- NTH_VALUE Function
 -- Provide quarterly sales information before the year 2000 for three custumers
+SELECT	 c.cust_id,
+		 t.calendar_quarter_desc,
+		 SUM (amount_sold) AS q_sales,
+		 FIRST_VALUE (SUM (amount_sold)) OVER w AS q1,
+		 NTH_VALUE (SUM (amount_sold), 2) OVER w AS q2,
+		 NTH_VALUE (SUM (amount_sold), 3) OVER w AS q3,
+		 LAST_VALUE (SUM (amount_sold)) OVER w AS q4		 
+FROM	 sh.sales s
+ JOIN	 sh.customers c ON c.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+WHERE 	 t.calendar_year = 2000
+AND		 c.cust_id IN (2595, 9646, 11111)
+GROUP BY c.cust_id,
+		 t.calendar_quarter_desc,
+		 t.calendar_quarter_number 
+WINDOW   w AS (PARTITION BY c.cust_id ORDER BY c.cust_id, t.calendar_quarter_desc
+		 	   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) -- first row of the frame 
+ORDER BY c.cust_id,
+		 t.calendar_quarter_desc;
