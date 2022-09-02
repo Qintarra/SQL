@@ -153,3 +153,4 @@ ORDER BY t.calendar_month_number;
 --
 
 -- NTH_VALUE Function
+-- Provide quarterly sales information before the year 2000 for three custumers
