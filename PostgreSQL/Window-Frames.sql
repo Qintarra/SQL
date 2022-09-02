@@ -126,3 +126,17 @@ ORDER BY 1;
 --
 
 -- RANGE vs GROUPS
+SELECT	 t.calendar_month_number,
+		 SUM (amount_sold) AS m_sales,
+		 FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_month_number
+		 		 		 		 		 	   RANGE BETWEEN 1 PRECEDING AND CURRENT ROW) AS range_first_value,
+		 FIRST_VALUE (SUM (amount_sold)) OVER (ORDER BY t.calendar_month_number
+		 		 		 		 		 	   GROUPS BETWEEN 1 PRECEDING AND CURRENT ROW) AS groups_first_value
+FROM	 sh.sales s
+ JOIN	 sh.customers c ON c.cust_id = s.cust_id 
+ JOIN 	 sh.times t ON t.time_id = s.time_id 
+ JOIN 	 sh.channels ch ON ch.channel_id = s.channel_id
+WHERE 	 t.calendar_year = 1998
+AND		 ch.channel_desc = 'Tele Sales'
+GROUP BY t.calendar_month_number
+ORDER BY t.calendar_month_number;
