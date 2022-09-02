@@ -140,3 +140,14 @@ WHERE 	 t.calendar_year = 1998
 AND		 ch.channel_desc = 'Tele Sales'
 GROUP BY t.calendar_month_number
 ORDER BY t.calendar_month_number;
+/*
+|calendar_month_number|m_sales  |range_first_value|groups_first_value|
+|---------------------|---------|-----------------|------------------|
+|3                    |53,395.37|53,395.37        |53,395.37         |
+|4                    |42,712.02|53,395.37        |53,395.37         |
+|5                    |21,446.08|42,712.02        |42,712.02         |
+|10                   |59,726.93|59,726.93        |21,446.08         |
+|11                   |50,884.91|59,726.93        |59,726.93         |
+|12                   |49,260.95|50,884.91        |50,884.91         |
+*/
+--
