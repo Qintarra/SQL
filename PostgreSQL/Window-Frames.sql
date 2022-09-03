@@ -191,7 +191,7 @@ ORDER BY c.cust_id,
 */
 
 -- Same, but in a more readable form:
-SELECT	cust_id, MAX(q1) AS q1,	MAX(q2) AS q2, MAX(q3) AS q3, MAX(q4) AS q4
+SELECT	cust_id, MAX(q1) AS q1,	MAX(q2) AS q2, MAX(q3) AS q3, MAX(q4) AS q4 -- apply the MAX function for the columns with sales by quarters
 FROM (
         SELECT	 c.cust_id,
                  t.calendar_quarter_desc,
