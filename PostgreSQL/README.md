@@ -8,3 +8,8 @@
 - Subqueries
 - CTE
 
+02. DML Statements
+- INSERT 
+- UPDATE 
+- DELETE & TRUNCATE 
+
