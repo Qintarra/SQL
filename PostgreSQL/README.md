@@ -22,3 +22,7 @@
 04. DCL Statements
 - GRANT
 - REVOKE
+
+05. Aggregate Window Functions
+
+
