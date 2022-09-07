@@ -19,3 +19,6 @@
 - ALTER
 - DROP
 
+04. DCL Statements
+- GRANT
+- REVOKE
