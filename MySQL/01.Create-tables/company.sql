@@ -1,6 +1,6 @@
 
 
-
+-- Table: employee
 CREATE TABLE employee (
     employee_id INTEGER   PRIMARY KEY AUTOINCREMENT,
     name        CHAR (50) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE employee (
 );
 
 
-
+-- Table: employee_position
 CREATE TABLE employee_position (
     employee_position_id INTEGER   PRIMARY KEY AUTOINCREMENT,
     title                CHAR (30) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE employee_position (
 );
 
 
-
+-- Table: project
 CREATE TABLE project (
     project_id        INTEGER   PRIMARY KEY AUTOINCREMENT,
     name              CHAR (40) NOT NULL
@@ -32,14 +32,14 @@ CREATE TABLE project (
 );
 
 
-
+-- Table: project_status
 CREATE TABLE project_status (
     project_status_id INTEGER  PRIMARY KEY AUTOINCREMENT,
     status            CHAR (6) NOT NULL
 );
 
 
-
+-- Table: project_task
 CREATE TABLE project_task (
     task_id    INTEGER REFERENCES task (task_id) 
                        NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE project_task (
 );
 
 
-
+-- Table: task
 CREATE TABLE task (
     task_id            INTEGER PRIMARY KEY AUTOINCREMENT,
     deadline           DATE    NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE task (
 );
 
 
-
+-- Table: task_status
 CREATE TABLE task_status (
     task_status_id INTEGER   PRIMARY KEY AUTOINCREMENT,
     status         CHAR (20) NOT NULL
@@ -65,7 +65,7 @@ CREATE TABLE task_status (
 );
 
 
-
+-- Table: task_status_set
 CREATE TABLE task_status_set (
     task_status_set_id INTEGER PRIMARY KEY AUTOINCREMENT,
     date               DATE    NOT NULL,
