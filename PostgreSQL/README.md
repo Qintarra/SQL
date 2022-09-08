@@ -25,4 +25,5 @@
 
 05. Aggregate Window Functions
 
+06. Ranking Window Functions
 
