@@ -27,3 +27,4 @@
 
 06. Ranking Window Functions
 
+07. Offset Window Functions
