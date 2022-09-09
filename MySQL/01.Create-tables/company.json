@@ -1,0 +1,394 @@
+{
+    "type": "database",
+    "name": "company",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "employee",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE employee (employee_id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR (50) NOT NULL, surename CHAR (50) NOT NULL, birth_date DATE NOT NULL)",
+            "columns": [
+                {
+                    "name": "employee_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY ASC AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "CHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "surename",
+                    "type": "CHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "birth_date",
+                    "type": "DATE",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "employee_position",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE employee_position (employee_position_id INTEGER PRIMARY KEY AUTOINCREMENT, title CHAR (30) NOT NULL, employee_id INTEGER REFERENCES employee (employee_id) NOT NULL)",
+            "columns": [
+                {
+                    "name": "employee_position_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "title",
+                    "type": "CHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "employee_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES employee (employee_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "project",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE project (project_id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR (40) NOT NULL UNIQUE, date_of_creation DATE NOT NULL, date_of_closure DATE NOT NULL, project_status_id INTEGER REFERENCES project_status (project_status_id) NOT NULL, employee_position INTEGER REFERENCES employee_position (employee_position_id) NOT NULL)",
+            "columns": [
+                {
+                    "name": "project_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "CHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "date_of_creation",
+                    "type": "DATE",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "date_of_closure",
+                    "type": "DATE",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "project_status_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES project_status (project_status_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "employee_position",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES employee_position (employee_position_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "project_status",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE project_status (project_status_id INTEGER PRIMARY KEY AUTOINCREMENT, status CHAR (6) NOT NULL)",
+            "columns": [
+                {
+                    "name": "project_status_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "status",
+                    "type": "CHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "project_task",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE project_task (task_id INTEGER REFERENCES task (task_id) NOT NULL, project_id INTEGER REFERENCES project (project_id) NOT NULL)",
+            "columns": [
+                {
+                    "name": "task_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES task (task_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "project_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES project (project_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "task",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE task (task_id INTEGER PRIMARY KEY AUTOINCREMENT, deadline DATE NOT NULL, task_status_set_id INTEGER REFERENCES task_status_set (task_status_set_id) NOT NULL)",
+            "columns": [
+                {
+                    "name": "task_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "deadline",
+                    "type": "DATE",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "task_status_set_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES task_status_set (task_status_set_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "task_status",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE task_status (task_status_id INTEGER PRIMARY KEY AUTOINCREMENT, status CHAR (20) NOT NULL UNIQUE)",
+            "columns": [
+                {
+                    "name": "task_status_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "status",
+                    "type": "CHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "task_status_set",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE task_status_set (task_status_set_id INTEGER PRIMARY KEY AUTOINCREMENT, date DATE NOT NULL, task_status_id INTEGER REFERENCES task_status (task_status_id) NOT NULL, employee_id INTEGER REFERENCES employee (employee_id) NOT NULL)",
+            "columns": [
+                {
+                    "name": "task_status_set_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "date",
+                    "type": "DATE",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "task_status_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES task_status (task_status_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "employee_id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES employee (employee_id) "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        }
+    ]
+}
