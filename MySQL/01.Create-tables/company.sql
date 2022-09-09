@@ -1,4 +1,4 @@
-
+BEGIN TRANSACTION;
 
 -- Table: employee
 CREATE TABLE employee (
@@ -75,3 +75,5 @@ CREATE TABLE task_status_set (
                                NOT NULL
 );
 
+
+COMMIT TRANSACTION;
