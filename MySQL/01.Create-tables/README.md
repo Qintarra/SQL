@@ -14,3 +14,6 @@ DB should contain at least 7 tables with primary and foreign keys, unique, not n
 - Do not use `` to escape a table name or column name.
 - Don’t use digits in table names or column names.
 - Use only  CREATE TABLE statements (CREATE index, etc. are forbidden) 
+
+### Domain description   
+
