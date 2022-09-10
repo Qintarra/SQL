@@ -12,3 +12,4 @@ DB should contain at least 7 tables with primary and foreign keys, unique, not n
 - Please use only simple primary and foreign keys (single column/attribute).
 - Do not use IF NOT EXISTS statement.
 - Do not use `` to escape a table name or column name.
+- Don’t use digits in table names or column names.
