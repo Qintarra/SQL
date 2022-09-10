@@ -10,3 +10,4 @@ DB should contain at least 7 tables with primary and foreign keys, unique, not n
 - Do not use ALTER operations 
 - Don’t use cascading deletion from tables (is forbidden).
 - Please use only simple primary and foreign keys (single column/attribute).
+- Do not use IF NOT EXISTS statement.
