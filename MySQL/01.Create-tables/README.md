@@ -8,3 +8,4 @@ DB should contain at least 7 tables with primary and foreign keys, unique, not n
 
 ### Restrictions for creating table statements
 - Do not use ALTER operations 
+- Don’t use cascading deletion from tables (is forbidden).
