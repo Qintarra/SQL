@@ -6,4 +6,5 @@ Create a database scheme for the domain (see description). The BD scheme must co
 
 DB should contain at least 7 tables with primary and foreign keys, unique, not null attributes where it is suitable.
 
-### Restrictions for create table statements
+### Restrictions for creating table statements
+- Do not use ALTER operations 
