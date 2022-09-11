@@ -17,3 +17,4 @@ DB should contain at least 7 tables with primary and foreign keys, unique, not n
 
 ### Domain description   
 
+- The company employees carry out projects (project data: name, date of creation, status open/closed, date of closure).   
