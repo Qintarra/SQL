@@ -28,3 +28,7 @@ VALUES  (1, 'Yevgen', 'Kojevskiy', '2000-01-01'),
 		(8,	'Nadegda', 'Vesela', '1997-05-11'),
 		(9,	'Arsen', 'Govorliviy', '1990-11-21'),
 		(10, 'Mariya', 'Velikolepnaya', '1988-04-01');
+
+INSERT INTO contact_type (id, name)
+VALUES (1, 'phone'), (2, 'email');
+
