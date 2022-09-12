@@ -80,3 +80,7 @@ VALUES  (1, 'Beer',   1),
 		(8,	'Apple',  3),
 		(9,	'Snapper', 2),
 		(10, 'Tuna',  2);
+
+INSERT INTO manufacturer (id, name)
+VALUES (1, 'First'), (2, 'Second'), (3, 'Third'), (4, 'Fourth');
+
