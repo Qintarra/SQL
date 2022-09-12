@@ -32,3 +32,25 @@ VALUES  (1, 'Yevgen', 'Kojevskiy', '2000-01-01'),
 INSERT INTO contact_type (id, name)
 VALUES (1, 'phone'), (2, 'email');
 
+INSERT INTO person_contact (id, person_id, contact_type_id, contact_value)
+VALUES  (1, 9,	1,	'+38(099)123-45-67'),
+		(2, 9,	2,	'user9@example.com'),
+		(3,	10,	1,	'+38(098)123-45-67'),
+		(4,	10,	2,	'user10@example.com'),
+		(5,	8,	1,	'+38(097)123-45-67'),
+		(6,	8,	2,	'user8@example.com'),
+		(7,	7,	1,	'+38(067)123-45-67'),
+		(8,	7,	2,	'user7@example.com'),
+		(9,	6,	1,	'+38(066)123-45-67'),
+		(10, 6,	2,	'user6@example.com'),
+		(11, 5,	1,	'+38(055)123-45-67'),
+		(12, 5,	2,	'user5@example.com'),
+		(13, 4,	1,	'+38(044)123-45-67'),
+		(14, 4,	2,	'user4@example.com'),
+		(15, 3,	1,	'+38(033)123-45-67'),
+		(16, 3,	2,	'user3@example.com'),
+		(17, 2,	1,	'+38(022)123-45-67'),
+		(18, 2,	2,	'user2@example.com'),
+		(19, 1,	1,	'+38(011)123-45-67'),
+		(20, 1, 2,	'user1@example.com');
+
