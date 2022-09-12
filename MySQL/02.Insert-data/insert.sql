@@ -84,3 +84,25 @@ VALUES  (1, 'Beer',   1),
 INSERT INTO manufacturer (id, name)
 VALUES (1, 'First'), (2, 'Second'), (3, 'Third'), (4, 'Fourth');
 
+INSERT INTO product (id, product_title_id, manufacturer_id, price, comment)
+VALUES  (1,  1,	1,	10.11,	'Dark beer'),
+		(2,	 1,	2,	5.05,	'Light beer'),
+		(3,	 2,	3,	15,		'African Banana'),
+		(4,  2,	4,	20,		'Brazilian Banana'),
+		(5,  3,	1,	16.2,	'Mexican Orange'),
+		(6,	 3,	2,	12,		'Italian Orange'),
+		(7,	 4,	3,	13,		'Clear water'),
+		(8,	 4,	4,	50,		'Sweet water'),
+		(9,	 5,	1,	100,	'range Juice'),
+		(10, 5,	2,	120,	'Banana Juice'),
+		(11, 6,	3,	60,		'Coca Cola'),
+		(12, 6, 4,	5.5,	'Pepsi Cola'),
+		(13, 7,	1,	12.23,	'Smoked Salmon'),
+		(14, 7,	2,	10.02,	'Spicy Salmon'),
+		(15, 8,	2,	89,		'Red apple'),
+		(16, 8,	1,	88.99,	'Sweet apple'),
+		(17, 9,	2,	32,		'Fresh Snapper'),
+		(18, 9,	1,	33.33,	'Frozen Snaper'),
+		(19, 10, 2,	44.44,	'Canned Tuna'),
+		(20, 10, 2,	55.55,	'Fried Tuna');
+
