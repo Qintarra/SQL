@@ -66,3 +66,6 @@ VALUES  (1, 921212121, 0.1),
 		(9,	218324131, 0),
 		(10, 423443222, 0);
 
+INSERT INTO product_category (id, name)
+VALUES (1, 'drinks'), (2, 'fish'), (3, 'fruits');
+
