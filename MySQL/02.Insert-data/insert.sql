@@ -69,3 +69,14 @@ VALUES  (1, 921212121, 0.1),
 INSERT INTO product_category (id, name)
 VALUES (1, 'drinks'), (2, 'fish'), (3, 'fruits');
 
+INSERT INTO product_title (id, title, product_category_id)
+VALUES  (1, 'Beer',   1),
+		(2, 'Banana', 3),
+		(3,	'Orange', 3),
+		(4,	'Water',  1),
+		(5,	'Juice',  1),
+		(6,	'Cola',   1),
+		(7,	'Salmon', 2),
+		(8,	'Apple',  3),
+		(9,	'Snapper', 2),
+		(10, 'Tuna',  2);
