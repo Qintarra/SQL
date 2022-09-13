@@ -24,5 +24,5 @@ Write INSERT statements to fill all tables (look at DB schema in file **schema.j
 
 Supermarkets sell goods of various categories. The customers can shop anonymously or by logging in. When buying, a receipt is created with a list of goods purchased in a particular market. 
 
-![DBSchema](/MySQL/02.Insert-data/schema.jpg)
+![DBSchema](/MySQL/02.Insert-data/schema.jpg "schema")
 ______
