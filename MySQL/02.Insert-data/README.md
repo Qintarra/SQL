@@ -20,4 +20,6 @@ Write INSERT statements to fill all tables (look at DB schema in file **schema.j
 | customer_order | 20 |
 | order_details | 20 | min 1 row  per customer_order |
 
+### Domain description   
+
 
