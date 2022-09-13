@@ -4,3 +4,20 @@
 
 Write INSERT statements to fill all tables (look at DB schema in file **schema.jpg** ) with the following minimum row count: 
 
+| table | row count | comment
+| ------ | ------ | ------ |
+| city | 3 |
+| street | 5 |
+| supermarket | 7 |
+| person | 10 |
+| contact_type | 2 |
+| person_contact | 20 |
+| customer | 10 |
+| product_category | 3 |
+| product_title | 10 | min 3 per category |
+| manufacturer | 4 |
+| product | 20 |
+| customer_order | 20 |
+| order_details | 20 | min 1 row  per customer_order |
+
+
