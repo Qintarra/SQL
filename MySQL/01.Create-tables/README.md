@@ -26,4 +26,4 @@ ______
 
 ### Schema of the solved task:
 
-![company_schema](/01.Create-tables/company.jpg "company")
+![company_schema](/MySQL/01.Create-tables/company.jpg "company")
