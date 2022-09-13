@@ -2,7 +2,7 @@
 
 ## Task  
 
-Create a database scheme for the domain (see description). The BD scheme must correspond to at least the third normal form (3NF).
+Create a database schema for the domain (see description). The BD schema must correspond to at least the third normal form (3NF).
 
 DB should contain at least 7 tables with primary and foreign keys, unique, not null attributes where it is suitable.
 
@@ -20,3 +20,10 @@ DB should contain at least 7 tables with primary and foreign keys, unique, not n
 - The company employees carry out projects (project data: name, date of creation, status open/closed, date of closure).   
 - An employee can carry out several projects, on different projects his position may differ.  
 - Tasks for the project are issued to the employee with a deadline. The task can be in the status: open, completed, requires revision, accepted (closed), indicating the date of setting the status and the employee setting the status. 
+
+______
+
+
+### Schema of the solved task:
+
+![company schema](/01.Create-tables/company.jpg "company")
