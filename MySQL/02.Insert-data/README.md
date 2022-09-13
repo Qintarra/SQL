@@ -22,4 +22,7 @@ Write INSERT statements to fill all tables (look at DB schema in file **schema.j
 
 ### Domain description   
 
+Supermarkets sell goods of various categories. The customers can shop anonymously or by logging in. When buying, a receipt is created with a list of goods purchased in a particular market. 
 
+
+______
