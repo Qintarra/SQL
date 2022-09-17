@@ -10,4 +10,4 @@
 
 4. Select persons (name, surname) whose last name begins with "Kra", sorted by surname  ascending. Customers with the same surnames should be sorted descending by birthday date. Scheme of result data set: **name | surname**
 
-
+5. Select persons (surname), sorted ascending by surname. The surnames must be different (not duplicate). Scheme of result data set: **surname** 
