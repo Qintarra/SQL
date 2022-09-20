@@ -1,5 +1,8 @@
 # PostgreSQL
 
+Learning and practicing PostgreSQL using the DVD rental database ([schema](https://github.com/Qintarra/SQL/blob/main/PostgreSQL/DVD_rental_DB.jpg))
+[PostgreSQL Sample Database](https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/)
+and Sales History database ([schema](https://github.com/Qintarra/SQL/blob/main/PostgreSQL/Sales_history_DB.jpg))
 
 01. DML Statements
 - SELECT 
