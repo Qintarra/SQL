@@ -8,3 +8,5 @@
  
 3. Find the order with the highest total discount value among all orders and get its discount value (max_order_discount). Scheme of result data set: **max_order_discount**
 
+### Restriction for create table statements
+- Do not use Subqueries 
