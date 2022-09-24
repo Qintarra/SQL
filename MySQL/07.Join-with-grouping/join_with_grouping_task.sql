@@ -17,3 +17,13 @@ INNER JOIN city ON city_id = city.id
 WHERE customer_order.operation_time BETWEEN '2020-11-01' AND '2020-11-30'
 GROUP BY city.name
 ORDER BY city, income;
+
+-- Select a list of customers without discount and their summary purchase (surname, name, birth_date, sum)  in the 2021 year (the date format is YYYY-MM-DD), sorted ascending by purchase and surname.
+SELECT surname, name, birth_date, SUM (order_details.price * order_details.product_amount) AS sum
+FROM order_details
+INNER JOIN customer_order ON customer_order_id = customer_order.id
+INNER JOIN customer ON customer_id = person_id
+INNER JOIN person ON person_id = person.id
+WHERE customer_order.operation_time BETWEEN '2021-01-01' AND '2021-12-31' AND discount = 0
+GROUP BY customer_id
+ORDER BY 4, 1;
