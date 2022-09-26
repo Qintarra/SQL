@@ -6,3 +6,6 @@ ADD short_name CHAR;
 ALTER TABLE person
 ADD isActive BOOL;
 
+-- Add new column **area** to the **supermarket** table
+ALTER TABLE supermarket
+ADD area DOUBLE;
