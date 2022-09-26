@@ -16,3 +16,16 @@ LEFT JOIN order_details ON customer_order_id = customer_order.id
 WHERE customer_order_id IS NULL AND person_id = person.id
 ORDER BY 1, 3;
 
+-- Get a list of customers with their total amount of purchases (last name, first name, total expenses). The list includes buyers with and without purchases in retailer stores. The list also includes one anonymous buyer. Sort ascending by customer expenses and surname.
+SELECT surname, name, SUM (price_with_discount * product_amount) AS sum
+FROM order_details
+INNER JOIN customer_order ON customer_order_id = customer_order.id
+LEFT JOIN person ON customer_id = person.id
+GROUP BY surname, name
+UNION
+SELECT surname, name, 0
+FROM customer
+INNER JOIN person ON person_id = person.id
+LEFT JOIN customer_order ON customer_id = person_id
+WHERE customer_id IS NULL
+ORDER BY sum, surname;
