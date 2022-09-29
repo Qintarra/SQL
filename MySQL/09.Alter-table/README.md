@@ -3,4 +3,6 @@
 ## Task  
 
 1. Add new column **short_name** to the **manufacturer** table
+ 
+2. Add new column **isActive** to the **person** table
 
