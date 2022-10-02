@@ -6,3 +6,5 @@
 
 2. In the products table, all fruits and vegetables should fall in price by 25% of their current value.
 
+3. Double the discount for all customers.
+
