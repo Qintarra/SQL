@@ -8,3 +8,4 @@
 
 3. Double the discount for all customers.
 
+4. In the product table, all meat products should increase in price by 30%.
