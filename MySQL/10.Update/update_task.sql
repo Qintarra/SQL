@@ -17,3 +17,12 @@ WHERE id IN
 UPDATE customer
 SET discount = discount * 2;
 
+-- In the product table, all meat products should increase in price by 30%.
+UPDATE product 
+SET price = price * 1.3
+WHERE id IN
+        (SELECT product.id
+        FROM product
+        INNER JOIN product_title ON product_title.id = product_title_id
+        INNER JOIN product_category ON product_category.id = product_category_id
+        WHERE product_category.id = 5);
