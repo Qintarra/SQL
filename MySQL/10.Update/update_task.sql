@@ -12,3 +12,8 @@ WHERE id IN
         INNER JOIN product_title ON product_title.id = product_title_id
         INNER JOIN product_category ON product_category.id = product_category_id
         WHERE product_category.id IN (1, 3));
+
+-- Double the discount for all customers.
+UPDATE customer
+SET discount = discount * 2;
+
