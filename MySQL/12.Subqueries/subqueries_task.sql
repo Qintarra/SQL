@@ -26,16 +26,3 @@ HAVING SUM (price_with_discount * product_amount) >
 				INNER JOIN person ON person_id = person.id
 				GROUP BY person_id) AS purchases)
 ORDER BY 3, 1;
-
--- Get orders for 2021 year, which contain more items per order (not items’ product amount) than the average number of items across all orders. Sort ascendidng by order items amount and order id.
-SELECT customer_order_id AS order_id, COUNT (customer_order_id) AS items_count
-FROM order_details
-INNER JOIN customer_order ON customer_order_id = customer_order.id
-WHERE operation_time BETWEEN '2021-01-01' AND '2021-12-31'
-GROUP BY customer_order_id
-HAVING COUNT (customer_order_id) > 
-		(SELECT AVG (quantity) FROM
-		(SELECT customer_order_id, COUNT (customer_order_id) AS quantity
-		FROM order_details
-		GROUP BY customer_order_id))
-ORDER BY order_id, items_count;
