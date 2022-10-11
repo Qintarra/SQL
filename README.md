@@ -6,4 +6,4 @@
 - Window Frames
 
 ## MySQL
-- todo
+- creating a database schema
