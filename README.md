@@ -10,3 +10,4 @@
 - inserting data into the database tables
 - select, aggregation, grouping
 - inner join, outer join, join with grouping
+- update, delete, alter table
