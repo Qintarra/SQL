@@ -7,5 +7,6 @@
 
 ## MySQL
 - creating a database schema
-- inserting data to the database tables
+- inserting data into the database tables
 - select, aggregation, grouping
+- inner join, outer join, join with grouping
