@@ -149,3 +149,9 @@ values (3, 7),
 		(88, 8),
 		(91, 13),
 		(95, 7); --40
+
+-- 7. Create table roles  
+create table roles(
+		id serial primary key not null,
+		role_name int not null unique
+);
