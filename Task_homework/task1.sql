@@ -155,3 +155,7 @@ create table roles(
 		id serial primary key not null,
 		role_name int not null unique
 );
+
+-- 8. Change column type role_name from int to varchar(30)  
+alter table roles
+alter column role_name type varchar (30);
