@@ -76,3 +76,9 @@ values (1,	'Abigail'),
 		(68, 'Victoria'),
 		(69, 'William'),
 		(70, 'Zachary');
+
+-- 3. Create salary table   
+create table salary(
+		id serial primary key,
+		monthly_salary int not null
+);
