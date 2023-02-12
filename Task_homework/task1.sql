@@ -160,7 +160,7 @@ create table roles(
 alter table roles
 alter column role_name type varchar (30);
 
--- 9. Insert 20 rows into the table   
+-- 9. Insert 20 rows into the roles table   
 insert into roles(role_name)
 values   ('Junior Python developer'),
 		 ('Middle Python developer'),
@@ -193,3 +193,46 @@ create table roles_employee(
 		foreign key (role_id)
 				references roles(id)
 );
+
+-- 11. Insert 40 rows into the roles_employee table   
+insert into roles_employee(employee_id, role_id)
+values (7, 3),
+		(4, 2),
+		(63, 11),
+		(32, 5),
+		(5, 3),
+		(42, 6),
+		(25, 17),
+		(14, 2),
+		(53, 16),
+		(45, 13), --10
+		(52, 5),
+		(38, 15),
+		(16,1),
+		(67, 3),
+		(60, 10),
+		(6, 11),
+		(50, 12),
+		(31, 5),
+		(40, 14),
+		(29, 18), --20
+		(24, 17),
+		(56, 7),
+		(47, 6),
+		(18, 19),
+		(15, 12),
+		(37, 7),
+		(26, 14),
+		(10, 20),
+		(21, 2),
+		(30, 9), --30
+		(11, 4),
+		(13, 12),
+		(48, 1),
+		(58, 4),
+		(19, 8),
+		(69, 13),
+		(57, 5),
+		(33, 18),
+		(41, 13),
+		(59, 7); --40  
