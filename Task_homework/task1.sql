@@ -182,3 +182,14 @@ values   ('Junior Python developer'),
 		 ('Junior Automation QA engineer'),
 		 ('Middle Automation QA engineer'),
 		 ('Senior Automation QA engineer');
+
+-- 10. Create table roles_employee   		
+create table roles_employee(
+		id serial primary key,
+		employee_id int not null unique,
+		role_id int not null,
+		foreign key (employee_id)
+				references employees(id),
+		foreign key (role_id)
+				references roles(id)
+);
