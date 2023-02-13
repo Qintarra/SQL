@@ -32,3 +32,10 @@
 - 2300
 - 2400
 - 2500
+
+**employee_salary table**  
+
+5. Create employee_salary table  
+- id. Serial, primary key  
+- employee_id. Int, not null, unique  
+- salary_id. Int, not null  
