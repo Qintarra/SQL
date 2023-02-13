@@ -39,3 +39,6 @@
 - id. Serial, primary key  
 - employee_id. Int, not null, unique  
 - salary_id. Int, not null  
+
+6. Insert 40 rows into the employee_salary table  
+Insert a non-existent employee_id in 10 rows out of 40  
