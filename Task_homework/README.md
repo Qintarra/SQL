@@ -75,3 +75,10 @@ Insert a non-existent employee_id in 10 rows out of 40
 |18	|Junior Automation QA engineer |
 |19	|Middle Automation QA engineer |
 |20	|Senior Automation QA engineer |
+
+**roles_employee table**
+
+10. Create table roles_employee  
+- id. Serial, primary key,  
+- employee_id. Int, not null, unique (foreign key for employees table, id field)  
+- role_id. Int, not null (foreign key for roles table, id field)  
