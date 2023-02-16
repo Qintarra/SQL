@@ -48,3 +48,5 @@ Insert a non-existent employee_id in 10 rows out of 40
 7. Create table roles
 - id. Serial, primary key
 - role_name. Int, not null, unique  
+
+8. Change column type role_name from int to varchar(30)  
