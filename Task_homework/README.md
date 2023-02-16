@@ -82,3 +82,6 @@ Insert a non-existent employee_id in 10 rows out of 40
 - id. Serial, primary key,  
 - employee_id. Int, not null, unique (foreign key for employees table, id field)  
 - role_id. Int, not null (foreign key for roles table, id field)  
+
+11. Insert 40 rows into the roles_employee table  
+
