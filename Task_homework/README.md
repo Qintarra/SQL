@@ -1,6 +1,6 @@
-##SQL_Task
+## SQL Task
 
-###First part
+### First part
 
 **employees table**  
 
@@ -42,3 +42,9 @@
 
 6. Insert 40 rows into the employee_salary table  
 Insert a non-existent employee_id in 10 rows out of 40  
+
+**roles table**  
+
+7. Create table roles
+- id. Serial, primary key
+- role_name. Int, not null, unique  
