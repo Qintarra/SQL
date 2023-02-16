@@ -50,3 +50,6 @@ Insert a non-existent employee_id in 10 rows out of 40
 - role_name. Int, not null, unique  
 
 8. Change column type role_name from int to varchar(30)  
+
+9. Insert 20 rows into the roles table  
+
