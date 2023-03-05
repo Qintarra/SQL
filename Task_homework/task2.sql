@@ -29,3 +29,9 @@ select employee_name, salary_id
 from employees
 left join employee_salary on employee_salary.employee_id = employees.id
 where salary_id is null;
+
+-- 6. All employees with their job titles.  
+select employee_name, role_name
+from employees
+join roles_employee on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id;
