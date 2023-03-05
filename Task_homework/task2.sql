@@ -23,3 +23,9 @@ from employees
 right join employee_salary on employee_salary.employee_id = employees.id
 right join salary on employee_salary.salary_id = salary.id;
 where monthly_salary < 2000;
+
+-- 5. All employees who have not received a salary.  
+select employee_name, salary_id 
+from employees
+left join employee_salary on employee_salary.employee_id = employees.id
+where salary_id is null;
