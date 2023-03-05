@@ -85,7 +85,8 @@ Insert a non-existent employee_id in 10 rows out of 40
 
 11. Insert 40 rows into the roles_employee table  
 
-Now we got a database like this:  
+#### Now we got a database like this:
+  
 ![schema](/Task_homework/company_db.png "IT company")
 
 ### Second part
