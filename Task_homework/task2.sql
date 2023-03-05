@@ -97,3 +97,9 @@ join roles on roles_employee.role_id = roles.id
 join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id
 where role_name like '%Senior%';
+ 
+-- 15. Salaries of Java developers.   
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id;
