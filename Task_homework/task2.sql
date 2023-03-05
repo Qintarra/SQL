@@ -103,3 +103,12 @@ join employees on roles_employee.employee_id = employees.id
 join roles on roles_employee.role_id = roles.id 
 join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id;
+
+-- 16. Python developer salaries.  
+select role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where roles.role_name like '%Python dev%';
