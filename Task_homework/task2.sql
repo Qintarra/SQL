@@ -56,3 +56,10 @@ from employees
 join roles_employee on roles_employee.employee_id = employees.id
 join roles on roles_employee.role_id = roles.id
 where role_name like '%QA%';
+
+-- 10. Names and position of manual QA engineers.  
+select employee_name, role_name
+from employees
+join roles_employee on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+where role_name like '%Manual QA%';
