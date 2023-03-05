@@ -35,3 +35,10 @@ select employee_name, role_name
 from employees
 join roles_employee on roles_employee.employee_id = employees.id
 join roles on roles_employee.role_id = roles.id;
+
+-- 7. Names and titles of Java developers only.  
+select employee_name, role_name
+from employees
+join roles_employee on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id
+where role_name like '%Java dev%';
