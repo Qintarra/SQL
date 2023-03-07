@@ -184,3 +184,9 @@ join roles on roles_employee.role_id = roles.id
 join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id
 where role_name like '%QA%';
+
+-- 25. Number of QA engineers.  
+select count(role_name) as qa_count
+from roles_employee 
+join roles on roles_employee.role_id = roles.id
+where role_name like '%QA%';
