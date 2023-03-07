@@ -166,3 +166,12 @@ join roles on roles_employee.role_id = roles.id
 join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id
 where role_name like '%JavaScript dev%';
+
+-- 23. Minimum salary of QA engineers. 
+select min(monthly_salary) as min_qa_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like '%QA%';
