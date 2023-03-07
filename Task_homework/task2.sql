@@ -196,3 +196,9 @@ select count(role_name) as mid_count
 from roles_employee 
 join roles on roles_employee.role_id = roles.id
 where role_name like '%Mid%';
+
+-- 27. Number of developers.  
+select count(role_name) as devs_count
+from roles_employee 
+join roles on roles_employee.role_id = roles.id
+where role_name like '%dev%';
