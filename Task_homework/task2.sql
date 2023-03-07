@@ -211,3 +211,12 @@ join roles on roles_employee.role_id = roles.id
 join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id
 where role_name like '%dev%';
+
+-- 29. Names, positions and salaries of all specialists in ascending order.  
+select employee_name, role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+order by monthly_salary;
