@@ -130,3 +130,123 @@ join roles on roles_employee.role_id = roles.id
 join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id
 where roles.role_name like '%Middle JavaScript dev%';
+
+-- 19. Names and salaries of senior Java developers.  
+select employee_name, monthly_salary, role_name 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where roles.role_name like '%Middle JavaScript dev%';
+
+-- 20. Salaries of junior QA engineers. 
+select monthly_salary, role_name
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like 'Junior%QA%';
+ 
+-- 21. Average salary of all junior specialists.  
+select avg(monthly_salary) as avg_jun_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like 'Jun%';
+
+-- 22. Sum of salaries of JS developers.  
+select sum(monthly_salary) as sum_JavaScript_devs_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like '%JavaScript dev%';
+
+-- 23. Minimum salary of QA engineers. 
+select min(monthly_salary) as min_qa_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like '%QA%';
+ 
+-- 24. Maximum salary of QA engineers.  
+select max(monthly_salary) as max_qa_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like '%QA%';
+
+-- 25. Number of QA engineers.  
+select count(role_name) as qa_count
+from roles_employee 
+join roles on roles_employee.role_id = roles.id
+where role_name like '%QA%';
+
+-- 26. Number of middle specialists.  
+select count(role_name) as mid_count
+from roles_employee 
+join roles on roles_employee.role_id = roles.id
+where role_name like '%Mid%';
+
+-- 27. Number of developers.  
+select count(role_name) as devs_count
+from roles_employee 
+join roles on roles_employee.role_id = roles.id
+where role_name like '%dev%';
+
+-- 28. Sum of the developers' salaries.  
+select sum(monthly_salary) as sum_devs_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like '%dev%';
+
+-- 29. Names, positions and salaries of all specialists in ascending order.  
+select employee_name, role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+order by monthly_salary;
+
+-- 30. Names, positions and salary of all specialists in ascending order from specialists whose salary is from 1700 to 2300.  
+select employee_name, role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where monthly_salary between 1700 and 2300
+order by monthly_salary;
+  
+-- 31. Names, positions and salary of all specialists in ascending order from specialists whose salary is less than 2300.  
+select employee_name, role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where monthly_salary < 2300
+order by monthly_salary;
+
+-- 32. Names, positions and salary of all specialists in ascending order for specialists whose salary is equal to 1100, 1500, 2000.  
+select employee_name, role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where monthly_salary in (1100, 1500, 2000)
+order by monthly_salary;
