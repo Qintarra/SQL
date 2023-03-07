@@ -202,3 +202,12 @@ select count(role_name) as devs_count
 from roles_employee 
 join roles on roles_employee.role_id = roles.id
 where role_name like '%dev%';
+
+-- 28. Sum of the developers' salaries.  
+select sum(monthly_salary) as sum_devs_salary
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where role_name like '%dev%';
