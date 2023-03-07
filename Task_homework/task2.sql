@@ -230,3 +230,13 @@ join employee_salary on employee_salary.employee_id = employees.id
 join salary on salary_id = salary.id
 where monthly_salary between 1700 and 2300
 order by monthly_salary;
+  
+-- 31. Names, positions and salary of all specialists in ascending order from specialists whose salary is less than 2300.  
+select employee_name, role_name, monthly_salary 
+from roles_employee 
+join employees on roles_employee.employee_id = employees.id
+join roles on roles_employee.role_id = roles.id 
+join employee_salary on employee_salary.employee_id = employees.id
+join salary on salary_id = salary.id
+where monthly_salary < 2300
+order by monthly_salary;
