@@ -190,3 +190,9 @@ select count(role_name) as qa_count
 from roles_employee 
 join roles on roles_employee.role_id = roles.id
 where role_name like '%QA%';
+
+-- 26. Number of middle specialists.  
+select count(role_name) as mid_count
+from roles_employee 
+join roles on roles_employee.role_id = roles.id
+where role_name like '%Mid%';
