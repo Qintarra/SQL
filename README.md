@@ -12,3 +12,8 @@
 - inner join, outer join, join with grouping
 - update, delete, alter table
 - subqueries
+
+## Task_homework
+- creating tables
+- inserting data into the tables
+- select, join, aggregation
